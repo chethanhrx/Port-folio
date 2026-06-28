@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://chethanhrx.vercel.app';
+  const baseUrl = 'https://hethanhrx.netlify.app';
 
   return [
     {
