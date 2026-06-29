@@ -4,7 +4,8 @@
 
 @layer base {
   body {
-    @apply bg-[#fafcff] text-[#0f172a] antialiased selection:bg-[#2563eb] selection:text-white overflow-x-hidden;
+    background: radial-gradient(circle at 50% 0%, #ffffff 0%, #f3f6fa 55%, #e8edf5 100%);
+    @apply text-[#0f172a] antialiased selection:bg-[#2563eb] selection:text-white overflow-x-hidden min-h-screen;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
@@ -13,11 +14,10 @@
   }
 }
 
-/* Luxury Background mesh grid */
+/* Antigravity AI Matrix Dot Grid */
 .bg-grid-pattern {
-  background-size: 40px 40px;
-  background-image: linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-image: radial-gradient(circle, rgba(15, 23, 42, 0.08) 1px, transparent 1px);
 }
 
 /* Custom scrollbar */

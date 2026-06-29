@@ -22,8 +22,8 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/chethanhrx/mergebase',
     year: '2024',
     role: 'Lead Architect & Creator',
-    previewColor: 'from-blue-600 via-indigo-600 to-violet-600',
-    stats: { stars: 64, forks: 12, language: 'Java' }
+    previewColor: 'from-slate-900 via-indigo-950 to-slate-900',
+    stats: { stars: 0, forks: 0, language: 'Java' }
   },
   {
     id: 'watchtower',
@@ -46,8 +46,8 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/chethanhrx/Watch-Tower',
     year: '2024',
     role: 'Lead Full Stack & System Architect',
-    previewColor: 'from-indigo-600 via-purple-600 to-pink-600',
-    stats: { stars: 42, forks: 12, language: 'Java' }
+    previewColor: 'from-zinc-900 via-slate-900 to-indigo-950',
+    stats: { stars: 0, forks: 0, language: 'Java' }
   },
   {
     id: 'neuramate',
@@ -70,8 +70,8 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/chethanhrx/Neura-Mate',
     year: '2024',
     role: 'AI Researcher & Engineer',
-    previewColor: 'from-rose-600 via-red-600 to-orange-600',
-    stats: { stars: 54, forks: 14, language: 'Python' }
+    previewColor: 'from-slate-900 via-zinc-900 to-slate-900',
+    stats: { stars: 0, forks: 0, language: 'Python' }
   },
   {
     id: 'cardx',
@@ -94,8 +94,8 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/chethanhrx/CardX',
     year: '2024',
     role: 'Lead Developer',
-    previewColor: 'from-amber-600 via-orange-600 to-yellow-500',
-    stats: { stars: 38, forks: 9, language: 'PHP' }
+    previewColor: 'from-zinc-900 via-neutral-900 to-slate-900',
+    stats: { stars: 0, forks: 0, language: 'PHP' }
   },
   {
     id: 'itc-bot',
@@ -118,8 +118,8 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/Harxshz7/ITC-bot',
     year: '2024',
     role: 'Quantitative Engineer',
-    previewColor: 'from-emerald-600 via-teal-600 to-cyan-600',
-    stats: { stars: 29, forks: 7, language: 'Python' }
+    previewColor: 'from-slate-900 via-emerald-950 to-slate-900',
+    stats: { stars: 0, forks: 0, language: 'Python' }
   },
   {
     id: 'eventbridge',
@@ -142,7 +142,7 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/OrtexDevs/Event-Bridge',
     year: '2024',
     role: 'Frontend Architect',
-    previewColor: 'from-sky-600 via-blue-600 to-indigo-600',
-    stats: { stars: 18, forks: 4, language: 'TypeScript' }
+    previewColor: 'from-slate-900 via-sky-950 to-slate-900',
+    stats: { stars: 0, forks: 0, language: 'TypeScript' }
   }
 ];
