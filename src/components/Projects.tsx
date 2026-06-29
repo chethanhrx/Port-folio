@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Layers, Sparkles } from 'lucide-react';
+import { ArrowRight, Layers, Sparkles, Github, Star } from 'lucide-react';
 import { PROJECTS_DATA } from '../data/projects';
 import { Project } from '../types';
 import ProjectModal from './ProjectModal';
@@ -26,40 +26,40 @@ export default function Projects() {
   return (
     <section id="projects" className="py-28 px-6 relative z-10 max-w-7xl mx-auto">
       <div className="flex flex-col items-center text-center mb-16 relative">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0f1423] border border-cyan-500/30 text-accentCyan text-xs font-mono uppercase tracking-widest mb-6 shadow-sm">
-          <Layers size={15} />
-          <span className="font-bold">Featured Engineering Works</span>
+        <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border border-blue-500/30 text-blue-600 text-xs font-mono uppercase tracking-widest mb-6 shadow-sm">
+          <Layers size={16} />
+          <span className="font-extrabold">Featured Engineering Works</span>
         </div>
         
-        <h2 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-6">
+        <h2 className="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight mb-6">
           Systems & Applications <br />
-          <span className="text-accentCyan">Architected for Scale</span>
+          <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Architected for Scale</span>
         </h2>
         
-        <p className="text-gray-400 max-w-2xl text-base sm:text-lg leading-relaxed">
-          Click any card below to inspect its architectural blueprints, data flow, solved bottlenecks, and telemetry.
+        <p className="text-slate-500 max-w-2xl text-base sm:text-lg leading-relaxed font-medium">
+          Click any card below to inspect its architectural blueprints, data flow, solved bottlenecks, and live telemetry. Designed with high-conviction luxury aesthetics.
         </p>
       </div>
 
       {/* Filterable Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-2.5 mb-16">
+      <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
+            className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 flex items-center gap-2.5 shadow-sm transform hover:-translate-y-0.5 ${
               selectedCategory === category
-                ? 'bg-accentCyan text-black shadow-glow-cyan'
-                : 'bg-[#0f1423] border border-white/10 text-gray-400 hover:text-white hover:border-white/20 hover:bg-[#161e33]'
+                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-glow-cyan'
+                : 'bg-white border border-slate-200/80 text-slate-600 hover:text-blue-600 hover:border-blue-500/50 hover:bg-blue-50/40'
             }`}
           >
             <span>{category}</span>
-            {selectedCategory === category && <Sparkles size={15} />}
+            {selectedCategory === category && <Sparkles size={16} className="animate-spin-slow" />}
           </button>
         ))}
       </div>
 
-      {/* Clean Projects Grid */}
+      {/* Clean Luxury 3D Projects Grid */}
       <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <AnimatePresence>
           {filteredProjects.map((project) => (
@@ -71,49 +71,67 @@ export default function Projects() {
               transition={{ duration: 0.3 }}
               key={project.id}
               onClick={() => setActiveProject(project)}
-              className="group cursor-pointer rounded-2xl bg-[#0f1423] border border-white/10 hover:border-accentCyan/50 transition-all duration-300 shadow-lg hover:shadow-card-hover overflow-hidden flex flex-col justify-between transform hover:-translate-y-1.5"
+              className="group cursor-pointer rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/80 hover:border-blue-500 transition-all duration-500 shadow-[0_10px_35px_rgba(0,0,0,0.05)] hover:shadow-[0_25px_50px_rgba(37,99,235,0.18)] overflow-hidden flex flex-col justify-between transform hover:-translate-y-2.5 relative"
             >
               {/* Top Banner Gradient */}
-              <div className={`h-48 bg-gradient-to-tr ${project.previewColor} p-6 flex flex-col justify-between relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300" />
+              <div className={`h-52 bg-gradient-to-tr ${project.previewColor} p-7 flex flex-col justify-between relative overflow-hidden`}>
+                {/* Subtle geometric overlay inside card banner */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.3),transparent_50%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-300" />
                 
                 <div className="relative z-10 flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-md bg-[#06080f]/90 border border-white/10 text-[11px] font-mono font-bold text-accentCyan">
+                  <span className="px-3.5 py-1.5 rounded-xl bg-white/90 backdrop-blur-md border border-white/40 text-[11px] font-mono font-extrabold text-slate-800 shadow-sm">
                     {project.category}
                   </span>
-                  <div className="w-9 h-9 rounded-xl bg-[#06080f]/90 border border-white/15 flex items-center justify-center text-white group-hover:bg-accentCyan group-hover:text-black group-hover:border-accentCyan transition-all duration-300 shadow-sm">
-                    <ArrowRight size={16} className="transform group-hover:translate-x-0.5 transition-transform" />
+                  <div className="w-10 h-10 rounded-2xl bg-white/90 backdrop-blur-md border border-white/40 flex items-center justify-center text-slate-900 group-hover:bg-white group-hover:text-blue-600 group-hover:scale-110 transition-all duration-300 shadow-md">
+                    <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
 
                 <div className="relative z-10">
-                  <h3 className="text-2xl font-black text-white tracking-tight group-hover:text-accentCyan transition-colors">
-                    {project.title}
-                  </h3>
-                  <span className="text-xs font-mono text-gray-300 font-medium">{project.role} • {project.year}</span>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-2xl font-black text-white tracking-tight drop-shadow-sm">
+                      {project.title}
+                    </h3>
+                  </div>
+                  <span className="text-xs font-mono text-white/90 font-bold drop-shadow-sm">{project.role} • {project.year}</span>
                 </div>
               </div>
 
               {/* Card Body */}
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-6">
-                <p className="text-gray-300 text-sm leading-relaxed line-clamp-3">
+              <div className="p-7 flex-1 flex flex-col justify-between space-y-6">
+                <p className="text-slate-600 text-sm leading-relaxed line-clamp-3 font-medium">
                   {project.shortDescription}
                 </p>
 
-                {/* Tech Badges */}
-                <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
-                  {project.techStack.slice(0, 4).map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-semibold text-gray-200 group-hover:border-cyan-500/30 group-hover:text-accentCyan transition-colors"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.techStack.length > 4 && (
-                    <span className="px-2 py-1 rounded-md bg-white/5 text-xs font-bold text-gray-400">
-                      +{project.techStack.length - 4}
-                    </span>
+                {/* Tech Badges & GitHub Stats */}
+                <div className="space-y-4 pt-4 border-t border-slate-100">
+                  <div className="flex flex-wrap gap-2">
+                    {project.techStack.slice(0, 4).map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700 group-hover:border-blue-500/40 group-hover:text-blue-600 group-hover:bg-blue-50/50 transition-all shadow-2xs"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.techStack.length > 4 && (
+                      <span className="px-2.5 py-1.5 rounded-xl bg-slate-100 text-xs font-extrabold text-slate-500">
+                        +{project.techStack.length - 4}
+                      </span>
+                    )}
+                  </div>
+
+                  {project.stats && (
+                    <div className="flex items-center justify-between text-xs font-mono text-slate-400 pt-2">
+                      <span className="flex items-center gap-1.5 font-bold text-slate-600">
+                        <Star size={14} className="fill-amber-400 text-amber-400" />
+                        {project.stats.stars} Stars
+                      </span>
+                      <span className="flex items-center gap-1 text-slate-500 font-semibold hover:text-blue-600" onClick={(e) => { e.stopPropagation(); window.open(project.githubUrl, '_blank'); }}>
+                        <Github size={14} /> Repository &rarr;
+                      </span>
+                    </div>
                   )}
                 </div>
               </div>

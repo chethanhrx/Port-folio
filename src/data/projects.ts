@@ -22,7 +22,7 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/chethanhrx/mergebase',
     year: '2024',
     role: 'Lead Architect & Creator',
-    previewColor: 'from-cyan-500/20 to-blue-600/20',
+    previewColor: 'from-blue-600 via-indigo-600 to-violet-600',
     stats: { stars: 64, forks: 12, language: 'Java' }
   },
   {
@@ -46,7 +46,7 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/chethanhrx/Watch-Tower',
     year: '2024',
     role: 'Lead Full Stack & System Architect',
-    previewColor: 'from-indigo-500/20 to-purple-600/20',
+    previewColor: 'from-indigo-600 via-purple-600 to-pink-600',
     stats: { stars: 42, forks: 12, language: 'Java' }
   },
   {
@@ -70,7 +70,7 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/chethanhrx/Neura-Mate',
     year: '2024',
     role: 'AI Researcher & Engineer',
-    previewColor: 'from-rose-500/20 to-red-600/20',
+    previewColor: 'from-rose-600 via-red-600 to-orange-600',
     stats: { stars: 54, forks: 14, language: 'Python' }
   },
   {
@@ -94,7 +94,7 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/chethanhrx/CardX',
     year: '2024',
     role: 'Lead Developer',
-    previewColor: 'from-amber-500/20 to-orange-600/20',
+    previewColor: 'from-amber-600 via-orange-600 to-yellow-500',
     stats: { stars: 38, forks: 9, language: 'PHP' }
   },
   {
@@ -118,7 +118,7 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/Harxshz7/ITC-bot',
     year: '2024',
     role: 'Quantitative Engineer',
-    previewColor: 'from-emerald-500/20 to-teal-600/20',
+    previewColor: 'from-emerald-600 via-teal-600 to-cyan-600',
     stats: { stars: 29, forks: 7, language: 'Python' }
   },
   {
@@ -142,7 +142,7 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/OrtexDevs/Event-Bridge',
     year: '2024',
     role: 'Frontend Architect',
-    previewColor: 'from-sky-500/20 to-blue-600/20',
+    previewColor: 'from-sky-600 via-blue-600 to-indigo-600',
     stats: { stars: 18, forks: 4, language: 'TypeScript' }
   }
 ];
