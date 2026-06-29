@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://chethanhrx.vercel.app"),
+  metadataBase: new URL("https://chethanhrx.netlify.app"),
   title: "Chethan Kumar H R | Java Full Stack Developer & System Architect",
   description: "Official portfolio of Chethan Kumar H R (chethanhrx) — Java Full Stack Developer & AI System Architect specializing in Spring Boot, Microservices, React, and high-concurrency systems.",
   keywords: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Chethan Kumar H R | Java Full Stack Developer",
     description: "Official portfolio of Chethan Kumar H R (chethanhrx). Explore live projects, system architecture diagrams, and enterprise microservices.",
-    url: "https://chethanhrx.vercel.app",
+    url: "https://chethanhrx.netlify.app",
     siteName: "Chethan Kumar H R Portfolio",
     type: "website",
   },
@@ -49,7 +49,12 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://chethanhrx.vercel.app",
+    canonical: "https://chethanhrx.netlify.app",
+  },
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
 };
 
@@ -59,8 +64,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className="min-h-screen bg-[#0a0a0a] text-gray-100 font-sans antialiased relative selection:bg-[#00f2fe] selection:text-black">
+    <html lang="en" className="light scroll-smooth">
+      <body className="min-h-screen bg-[#fafcff] text-[#0f172a] font-sans antialiased relative selection:bg-[#2563eb] selection:text-white overflow-x-hidden">
         {children}
       </body>
     </html>

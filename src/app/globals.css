@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-[#06080f] text-gray-100 antialiased selection:bg-[#00f2fe] selection:text-black overflow-x-hidden;
+    @apply bg-[#fafcff] text-[#0f172a] antialiased selection:bg-[#2563eb] selection:text-white overflow-x-hidden;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
@@ -13,11 +13,11 @@
   }
 }
 
-/* Background mesh grid */
+/* Luxury Background mesh grid */
 .bg-grid-pattern {
   background-size: 40px 40px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
 }
 
 /* Custom scrollbar */
@@ -26,14 +26,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #06080f;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1f293d;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00f2fe;
+  background: #3b82f6;
 }
