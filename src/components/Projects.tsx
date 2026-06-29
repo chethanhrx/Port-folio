@@ -54,18 +54,18 @@ export default function Projects() {
   return (
     <section id="projects" className="py-32 px-6 relative z-10 max-w-7xl mx-auto">
       <div className="flex flex-col items-center text-center mb-20 relative">
-        <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/90 backdrop-blur-md border border-slate-200/80 text-blue-600 text-xs font-mono uppercase tracking-widest mb-6 shadow-sm">
+        <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/[0.04] backdrop-blur-md border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-widest mb-6">
           <Layers size={16} />
           <span className="font-extrabold">Featured Engineering Works</span>
         </div>
         
-        <h2 className="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight mb-6">
+        <h2 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-6">
           Systems & Applications <br />
-          <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Architected for Scale</span>
+          <span className="galaxy-text">Architected for Scale</span>
         </h2>
         
-        <p className="text-slate-600 max-w-2xl text-base sm:text-lg leading-relaxed font-medium">
-          Click any card below to inspect its architectural blueprints, data flow, solved bottlenecks, and live telemetry. Designed with clean Antigravity precision.
+        <p className="text-white/40 max-w-2xl text-base sm:text-lg leading-relaxed font-medium">
+          Click any card below to inspect its architectural blueprints, data flow, solved bottlenecks, and live telemetry.
         </p>
       </div>
 
@@ -75,10 +75,10 @@ export default function Projects() {
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 flex items-center gap-2.5 shadow-sm transform hover:-translate-y-0.5 ${
+            className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 flex items-center gap-2.5 transform hover:-translate-y-0.5 ${
               selectedCategory === category
-                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-glow-cyan'
-                : 'bg-white/90 backdrop-blur-md border border-slate-200/80 text-slate-600 hover:text-blue-600 hover:border-blue-500/50 hover:bg-blue-50/40'
+                ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-glow-cyan'
+                : 'bg-white/[0.04] backdrop-blur-md border border-white/[0.08] text-white/50 hover:text-cyan-400 hover:border-cyan-500/30'
             }`}
           >
             <span>{category}</span>
@@ -87,7 +87,7 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Monolithic Antigravity Glass Grid */}
+      {/* Projects Grid */}
       <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <AnimatePresence>
           {filteredProjects.map((project) => (
@@ -99,61 +99,61 @@ export default function Projects() {
               transition={{ duration: 0.3 }}
               key={project.id}
               onClick={() => setActiveProject(project)}
-              className="group cursor-pointer rounded-3xl bg-white/80 backdrop-blur-2xl border border-slate-200/80 hover:border-blue-500 transition-all duration-500 shadow-[0_10px_35px_rgba(0,0,0,0.04)] hover:shadow-[0_25px_60px_rgba(37,99,235,0.16)] p-8 flex flex-col justify-between transform hover:-translate-y-2.5 relative overflow-hidden"
+              className="group cursor-pointer rounded-3xl glass-card glass-card-hover transition-all duration-500 p-8 flex flex-col justify-between transform hover:-translate-y-2.5 relative overflow-hidden"
             >
-              {/* Subtle top glow bar on hover */}
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Top glow bar on hover */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div>
                 {/* Header Row */}
                 <div className="flex items-center justify-between mb-6">
-                  <span className="px-3.5 py-1.5 rounded-full bg-blue-50/80 border border-blue-200/60 text-blue-600 font-mono text-xs font-extrabold shadow-2xs">
+                  <span className="px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-xs font-extrabold">
                     {project.category}
                   </span>
-                  <div className="w-11 h-11 rounded-2xl bg-slate-100/80 border border-slate-200/60 flex items-center justify-center text-slate-700 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 group-hover:scale-110 transition-all duration-300 shadow-sm">
+                  <div className="w-11 h-11 rounded-2xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-white/50 group-hover:bg-cyan-500 group-hover:text-white group-hover:border-cyan-500 group-hover:scale-110 transition-all duration-300">
                     <ArrowRight size={18} className="transform group-hover:translate-x-0.5 transition-transform" />
                   </div>
                 </div>
 
                 {/* Title & Role */}
-                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors mb-1.5">
+                <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-cyan-400 transition-colors mb-1.5">
                   {project.title}
                 </h3>
-                <div className="text-xs font-mono text-slate-400 font-bold mb-5">
-                  {project.role} • <span className="text-slate-600">{project.year}</span>
+                <div className="text-xs font-mono text-white/30 font-bold mb-5">
+                  {project.role} • <span className="text-white/50">{project.year}</span>
                 </div>
 
                 {/* Description */}
-                <p className="text-slate-600 text-sm leading-relaxed line-clamp-3 font-medium mb-6">
+                <p className="text-white/40 text-sm leading-relaxed line-clamp-3 font-medium mb-6">
                   {project.shortDescription}
                 </p>
               </div>
 
               {/* Tech Badges & Live GitHub Stats */}
-              <div className="space-y-4 pt-5 border-t border-slate-100">
+              <div className="space-y-4 pt-5 border-t border-white/5">
                 <div className="flex flex-wrap gap-2">
                   {project.techStack.slice(0, 4).map((tech, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs font-bold text-slate-700 group-hover:border-blue-500/40 group-hover:text-blue-600 group-hover:bg-blue-50/40 transition-all shadow-2xs"
+                      className="px-3 py-1.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-xs font-bold text-white/60 group-hover:border-cyan-500/30 group-hover:text-cyan-400 transition-all"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.techStack.length > 4 && (
-                    <span className="px-2.5 py-1.5 rounded-xl bg-slate-100 text-xs font-extrabold text-slate-500">
+                    <span className="px-2.5 py-1.5 rounded-xl bg-white/[0.06] text-xs font-extrabold text-white/40">
                       +{project.techStack.length - 4}
                     </span>
                   )}
                 </div>
 
                 {project.stats && (
-                  <div className="flex items-center justify-between text-xs font-mono text-slate-500 pt-1">
-                    <span className="flex items-center gap-1.5 font-extrabold text-slate-700 bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200/60">
-                      <Star size={14} className="fill-amber-400 text-amber-500" />
+                  <div className="flex items-center justify-between text-xs font-mono text-white/40 pt-1">
+                    <span className="flex items-center gap-1.5 font-extrabold text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-lg border border-amber-500/20">
+                      <Star size={14} className="fill-amber-400 text-amber-400" />
                       {project.stats.stars} Verified Stars
                     </span>
-                    <span className="flex items-center gap-1 text-slate-600 font-bold hover:text-blue-600 transition-colors" onClick={(e) => { e.stopPropagation(); window.open(project.githubUrl, '_blank'); }}>
+                    <span className="flex items-center gap-1 text-white/50 font-bold hover:text-cyan-400 transition-colors" onClick={(e) => { e.stopPropagation(); window.open(project.githubUrl, '_blank'); }}>
                       <Github size={14} /> Repository &rarr;
                     </span>
                   </div>

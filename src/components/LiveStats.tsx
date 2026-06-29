@@ -74,12 +74,12 @@ export default function LiveStats() {
     <section className="py-16 px-6 relative z-10">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-3 mb-10 justify-center">
-          <div className="h-[1.5px] w-12 bg-slate-200" />
-          <span className="px-5 py-2 rounded-full bg-white border border-blue-500/30 text-xs font-mono tracking-widest text-blue-600 flex items-center gap-2 font-extrabold shadow-sm">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
+          <div className="section-divider w-12" />
+          <span className="px-5 py-2 rounded-full bg-white/[0.04] border border-cyan-500/20 text-xs font-mono tracking-widest text-cyan-400 flex items-center gap-2 font-extrabold backdrop-blur-md">
+            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping" />
             Live Real-Time Telemetry (API Fetched)
           </span>
-          <div className="h-[1.5px] w-12 bg-slate-200" />
+          <div className="section-divider w-12" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -90,25 +90,25 @@ export default function LiveStats() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="p-7 rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200/80 hover:border-blue-500/60 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(37,99,235,0.12)] hover:-translate-y-1.5 group"
+            className="p-7 rounded-3xl glass-card glass-card-hover transition-all duration-500 hover:-translate-y-1.5 group"
           >
             <div className="flex items-center justify-between mb-5">
-              <span className="text-slate-400 font-mono text-xs font-extrabold uppercase tracking-wider">GitHub Repos</span>
-              <div className="p-3.5 rounded-2xl bg-blue-50 text-blue-600 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-sm">
+              <span className="text-white/30 font-mono text-xs font-extrabold uppercase tracking-wider">GitHub Repos</span>
+              <div className="p-3.5 rounded-2xl bg-cyan-500/10 text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-500/20 transition-all">
                 <Github size={20} />
               </div>
             </div>
             
-            <div className="text-4xl font-black text-slate-900 mb-4 font-mono tracking-tight group-hover:text-blue-600 transition-colors">
+            <div className="text-4xl font-black text-white mb-4 font-mono tracking-tight group-hover:text-cyan-400 transition-colors">
               <AnimatedCounter value={githubStats.repos} />
             </div>
             
-            <div className="flex items-center gap-4 text-xs text-slate-600 pt-3 border-t border-slate-100 font-mono font-bold">
-              <span className="flex items-center gap-1.5 text-amber-500">
-                <Star size={15} className="fill-amber-500" />
+            <div className="flex items-center gap-4 text-xs text-white/50 pt-3 border-t border-white/5 font-mono font-bold">
+              <span className="flex items-center gap-1.5 text-amber-400">
+                <Star size={15} className="fill-amber-400" />
                 <AnimatedCounter value={githubStats.stars} /> Stars
               </span>
-              <span className="flex items-center gap-1.5 text-slate-500">
+              <span className="flex items-center gap-1.5 text-white/40">
                 <Users size={15} />
                 <AnimatedCounter value={githubStats.followers} /> Followers
               </span>
@@ -121,11 +121,11 @@ export default function LiveStats() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="p-7 rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200/80 hover:border-blue-500/60 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(37,99,235,0.12)] hover:-translate-y-1.5 group"
+            className="p-7 rounded-3xl glass-card glass-card-hover transition-all duration-500 hover:-translate-y-1.5 group"
           >
             <div className="flex items-center justify-between mb-5">
-              <span className="text-slate-400 font-mono text-xs font-extrabold uppercase tracking-wider">Tech Stack</span>
-              <div className="p-3.5 rounded-2xl bg-indigo-50 text-indigo-600 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-sm">
+              <span className="text-white/30 font-mono text-xs font-extrabold uppercase tracking-wider">Tech Stack</span>
+              <div className="p-3.5 rounded-2xl bg-purple-500/10 text-purple-400 group-hover:scale-110 group-hover:bg-purple-500/20 transition-all">
                 <Terminal size={20} />
               </div>
             </div>
@@ -134,7 +134,7 @@ export default function LiveStats() {
               {githubStats.topLanguages.slice(0, 4).map((lang, idx) => (
                 <span
                   key={idx}
-                  className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-extrabold text-slate-700 group-hover:border-blue-500/40 group-hover:text-blue-600 group-hover:bg-blue-50/50 transition-all shadow-2xs"
+                  className="px-3 py-1.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-xs font-extrabold text-white/70 group-hover:border-cyan-500/30 group-hover:text-cyan-400 transition-all"
                 >
                   {lang}
                 </span>
@@ -148,28 +148,28 @@ export default function LiveStats() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="p-7 rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200/80 hover:border-blue-500/60 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(37,99,235,0.12)] hover:-translate-y-1.5 group"
+            className="p-7 rounded-3xl glass-card glass-card-hover transition-all duration-500 hover:-translate-y-1.5 group"
           >
             <div className="flex items-center justify-between mb-5">
-              <span className="text-slate-400 font-mono text-xs font-extrabold uppercase tracking-wider">LeetCode Solved</span>
-              <div className="p-3.5 rounded-2xl bg-violet-50 text-violet-600 group-hover:scale-110 group-hover:bg-violet-600 group-hover:text-white transition-all shadow-sm">
+              <span className="text-white/30 font-mono text-xs font-extrabold uppercase tracking-wider">LeetCode Solved</span>
+              <div className="p-3.5 rounded-2xl bg-pink-500/10 text-pink-400 group-hover:scale-110 group-hover:bg-pink-500/20 transition-all">
                 <Code2 size={20} />
               </div>
             </div>
             
-            <div className="text-4xl font-black text-slate-900 mb-4 font-mono flex items-baseline gap-2 group-hover:text-blue-600 transition-colors">
+            <div className="text-4xl font-black text-white mb-4 font-mono flex items-baseline gap-2 group-hover:text-cyan-400 transition-colors">
               <AnimatedCounter value={leetcodeStats.solved} />
-              <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Problems</span>
+              <span className="text-xs text-white/30 font-bold uppercase tracking-wider">Problems</span>
             </div>
             
-            <div className="flex items-center justify-between gap-2 text-xs font-mono pt-3 border-t border-slate-100 font-bold">
-              <span className="text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
+            <div className="flex items-center justify-between gap-2 text-xs font-mono pt-3 border-t border-white/5 font-bold">
+              <span className="text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20">
                 E: {leetcodeStats.easy}
               </span>
-              <span className="text-amber-700 bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200">
+              <span className="text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-lg border border-amber-500/20">
                 M: {leetcodeStats.medium}
               </span>
-              <span className="text-rose-700 bg-rose-50 px-2.5 py-1 rounded-lg border border-rose-200">
+              <span className="text-rose-400 bg-rose-500/10 px-2.5 py-1 rounded-lg border border-rose-500/20">
                 H: {leetcodeStats.hard}
               </span>
             </div>
@@ -181,22 +181,22 @@ export default function LiveStats() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="p-7 rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200/80 hover:border-blue-500/60 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(37,99,235,0.12)] hover:-translate-y-1.5 group"
+            className="p-7 rounded-3xl glass-card glass-card-hover transition-all duration-500 hover:-translate-y-1.5 group"
           >
             <div className="flex items-center justify-between mb-5">
-              <span className="text-slate-400 font-mono text-xs font-extrabold uppercase tracking-wider">Global Ranking</span>
-              <div className="p-3.5 rounded-2xl bg-amber-50 text-amber-600 group-hover:scale-110 group-hover:bg-amber-600 group-hover:text-white transition-all shadow-sm">
+              <span className="text-white/30 font-mono text-xs font-extrabold uppercase tracking-wider">Global Ranking</span>
+              <div className="p-3.5 rounded-2xl bg-amber-500/10 text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all">
                 <Trophy size={20} />
               </div>
             </div>
             
-            <div className="text-3xl font-black text-slate-900 mb-4 font-mono truncate group-hover:text-blue-600 transition-colors">
+            <div className="text-3xl font-black text-white mb-4 font-mono truncate group-hover:text-cyan-400 transition-colors">
               {leetcodeStats.ranking}
             </div>
             
-            <div className="text-xs text-slate-500 flex items-center justify-between pt-3 border-t border-slate-100 font-mono font-bold">
-              <span className="flex items-center gap-1.5 text-blue-600">
-                <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" /> Active Contender
+            <div className="text-xs text-white/40 flex items-center justify-between pt-3 border-t border-white/5 font-mono font-bold">
+              <span className="flex items-center gap-1.5 text-cyan-400">
+                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" /> Active Contender
               </span>
               <span>@chethank_hr</span>
             </div>

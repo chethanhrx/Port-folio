@@ -14,7 +14,7 @@ import Background3D from '@/components/Background3D';
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-transparent overflow-hidden">
-      {/* 3D Particle WebGL / Canvas Background */}
+      {/* 3D Galaxy Blackhole WebGL Background */}
       <Background3D />
 
       {/* Navigation Header */}
