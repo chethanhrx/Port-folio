@@ -11,115 +11,127 @@ export default function Background3D() {
     if (!container) return;
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0xf3f6fa, 0.0012);
+    // Remove fog or keep very light far fog so nothing washes out into a white screen
+    scene.fog = new THREE.FogExp2(0xf4f6f9, 0.0008);
 
     const camera = new THREE.PerspectiveCamera(
       60,
       window.innerWidth / window.innerHeight,
       1,
-      1000
+      1500
     );
-    camera.position.z = 260;
-    camera.position.y = 20;
+    camera.position.set(0, 40, 220);
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // Antigravity AI Agentic Particle Field (Levitating floating dots)
-    const particleCount = 2000;
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
-    const colors = new Float32Array(particleCount * 3);
-    const velocities = new Float32Array(particleCount);
-
-    const palette = [
-      new THREE.Color('#2563eb'), // Royal Sapphire
-      new THREE.Color('#00f2fe'), // Neon Cyan
-      new THREE.Color('#8b5cf6'), // Electric Violet
-      new THREE.Color('#4f46e5'), // Deep Indigo
-      new THREE.Color('#38bdf8'), // Sky Blue
-    ];
-
-    for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 900;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 700;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 900;
-
-      velocities[i] = 0.15 + Math.random() * 0.35; // Upward levitation speed
-
-      const randomColor = palette[Math.floor(Math.random() * palette.length)];
-      colors[i * 3] = randomColor.r;
-      colors[i * 3 + 1] = randomColor.g;
-      colors[i * 3 + 2] = randomColor.b;
-    }
-
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-    // Create soft glowing circle particle texture
+    // Create high-contrast circular particle texture (Vivid dark center so it pops on light background!)
     const canvas = document.createElement('canvas');
     canvas.width = 64;
     canvas.height = 64;
     const ctx = canvas.getContext('2d');
     if (ctx) {
-      const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-      gradient.addColorStop(0, 'rgba(255,255,255,1)');
-      gradient.addColorStop(0.3, 'rgba(255,255,255,0.85)');
-      gradient.addColorStop(0.7, 'rgba(255,255,255,0.25)');
-      gradient.addColorStop(1, 'rgba(255,255,255,0)');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, 64, 64);
+      ctx.beginPath();
+      ctx.arc(32, 32, 28, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.fill();
     }
     const texture = new THREE.CanvasTexture(canvas);
 
+    // Antigravity Wave Particle Grid (Like Antigravity.google flowing gravity waves)
+    const cols = 70;
+    const rows = 50;
+    const particleCount = cols * rows;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+
+    const palette = [
+      new THREE.Color('#2563eb'), // Royal Sapphire Blue
+      new THREE.Color('#7c3aed'), // Electric Purple
+      new THREE.Color('#0891b2'), // Vivid Cyan
+      new THREE.Color('#1e293b'), // Deep Slate Carbon
+      new THREE.Color('#4f46e5'), // Electric Indigo
+    ];
+
+    let idx = 0;
+    for (let ix = 0; ix < cols; ix++) {
+      for (let iz = 0; iz < rows; iz++) {
+        positions[idx * 3] = (ix - cols / 2) * 18;
+        positions[idx * 3 + 1] = 0;
+        positions[idx * 3 + 2] = (iz - rows / 2) * 18;
+
+        // Color distribution
+        const color = palette[(ix + iz) % palette.length];
+        colors[idx * 3] = color.r;
+        colors[idx * 3 + 1] = color.g;
+        colors[idx * 3 + 2] = color.b;
+        idx++;
+      }
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
     const material = new THREE.PointsMaterial({
-      size: 5.5,
+      size: 4.5,
       vertexColors: true,
       map: texture,
       transparent: true,
-      opacity: 0.75,
-      blending: THREE.NormalBlending,
-      depthWrite: false
+      opacity: 0.85,
+      alphaTest: 0.1,
     });
 
-    const particleSystem = new THREE.Points(geometry, material);
-    scene.add(particleSystem);
+    const waveSystem = new THREE.Points(geometry, material);
+    waveSystem.position.y = -40;
+    scene.add(waveSystem);
 
-    // Antigravity Levitating Geometric Rings & Sphere Grids
-    const wireMatBlue = new THREE.MeshBasicMaterial({ color: 0x2563eb, wireframe: true, transparent: true, opacity: 0.15 });
-    const wireMatViolet = new THREE.MeshBasicMaterial({ color: 0x8b5cf6, wireframe: true, transparent: true, opacity: 0.15 });
-    const wireMatCyan = new THREE.MeshBasicMaterial({ color: 0x06b6d4, wireframe: true, transparent: true, opacity: 0.12 });
+    // Floating Antigravity Ethereal Rings & Spheres (High contrast wireframes)
+    const wireBlue = new THREE.MeshBasicMaterial({ color: 0x2563eb, wireframe: true, transparent: true, opacity: 0.22 });
+    const wirePurple = new THREE.MeshBasicMaterial({ color: 0x7c3aed, wireframe: true, transparent: true, opacity: 0.22 });
+    const wireCyan = new THREE.MeshBasicMaterial({ color: 0x0891b2, wireframe: true, transparent: true, opacity: 0.25 });
 
-    const sphereGeo = new THREE.SphereGeometry(45, 18, 18);
-    const sphere = new THREE.Mesh(sphereGeo, wireMatBlue);
-    sphere.position.set(-180, 50, -120);
-    scene.add(sphere);
+    const sphere1 = new THREE.Mesh(new THREE.SphereGeometry(40, 20, 20), wireBlue);
+    sphere1.position.set(-160, 60, -80);
+    scene.add(sphere1);
 
-    const torusGeo = new THREE.TorusGeometry(55, 1.2, 16, 100);
-    const torus = new THREE.Mesh(torusGeo, wireMatViolet);
-    torus.position.set(200, -30, -140);
-    torus.rotation.x = Math.PI / 3;
-    scene.add(torus);
+    const torus1 = new THREE.Mesh(new THREE.TorusGeometry(50, 1.5, 16, 100), wirePurple);
+    torus1.position.set(180, -20, -100);
+    torus1.rotation.x = Math.PI / 4;
+    scene.add(torus1);
 
-    const icoGeo = new THREE.IcosahedronGeometry(35, 2);
-    const ico = new THREE.Mesh(icoGeo, wireMatCyan);
-    ico.position.set(30, 140, -180);
-    scene.add(ico);
+    const ico1 = new THREE.Mesh(new THREE.IcosahedronGeometry(32, 2), wireCyan);
+    ico1.position.set(20, 120, -150);
+    scene.add(ico1);
 
-    // Antigravity matrix dot floor
-    const gridHelper = new THREE.GridHelper(1400, 50, 0x2563eb, 0xcbd5e1);
-    gridHelper.position.y = -200;
-    gridHelper.material.opacity = 0.25;
-    gridHelper.material.transparent = true;
-    scene.add(gridHelper);
+    // Floating background dust particles (high contrast dark blue dots)
+    const dustCount = 600;
+    const dustGeo = new THREE.BufferGeometry();
+    const dustPos = new Float32Array(dustCount * 3);
+    for (let i = 0; i < dustCount * 3; i += 3) {
+      dustPos[i] = (Math.random() - 0.5) * 1000;
+      dustPos[i + 1] = (Math.random() - 0.5) * 600;
+      dustPos[i + 2] = (Math.random() - 0.5) * 800;
+    }
+    dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
+    const dustMat = new THREE.PointsMaterial({
+      size: 3,
+      color: 0x2563eb,
+      transparent: true,
+      opacity: 0.4,
+      map: texture,
+      alphaTest: 0.1
+    });
+    const dustSystem = new THREE.Points(dustGeo, dustMat);
+    scene.add(dustSystem);
 
     let mouseX = 0;
     let mouseY = 0;
     const handleMouseMove = (event: MouseEvent) => {
-      mouseX = (event.clientX - window.innerWidth / 2) * 0.08;
-      mouseY = (event.clientY - window.innerHeight / 2) * 0.08;
+      mouseX = (event.clientX - window.innerWidth / 2) * 0.1;
+      mouseY = (event.clientY - window.innerHeight / 2) * 0.1;
     };
     window.addEventListener('mousemove', handleMouseMove);
 
@@ -132,42 +144,43 @@ export default function Background3D() {
     window.addEventListener('resize', handleResize);
 
     let animationFrameId: number;
-    let clock = new THREE.Clock();
+    let count = 0;
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
-      const elapsedTime = clock.getElapsedTime();
+      count += 0.03;
 
-      // Antigravity upward levitation physics
+      // Antigravity gravity wave calculation
       const posAttr = geometry.attributes.position;
-      for (let i = 0; i < particleCount; i++) {
-        let y = posAttr.getY(i) + velocities[i];
-        if (y > 350) y = -350; // Loop particles back to bottom when they float too high
-        
-        // Gentle horizontal wave drift
-        const x = posAttr.getX(i) + Math.sin(elapsedTime * 0.5 + i) * 0.1;
-        
-        posAttr.setX(i, x);
-        posAttr.setY(i, y);
+      let pIdx = 0;
+      for (let ix = 0; ix < cols; ix++) {
+        for (let iz = 0; iz < rows; iz++) {
+          const x = (ix - cols / 2) * 18;
+          const z = (iz - rows / 2) * 18;
+          // Smooth complex gravitational interference waves
+          const y = Math.sin(ix * 0.18 + count) * 14 + Math.cos(iz * 0.18 + count * 0.8) * 14;
+          posAttr.setY(pIdx, y);
+          pIdx++;
+        }
       }
       posAttr.needsUpdate = true;
 
-      particleSystem.rotation.y = elapsedTime * 0.02;
+      // Rotate geometric objects
+      sphere1.rotation.y = count * 0.2;
+      sphere1.rotation.x = count * 0.1;
 
-      // Rotate Antigravity floating primitives
-      sphere.rotation.y = elapsedTime * 0.15;
-      sphere.rotation.z = Math.sin(elapsedTime * 0.3) * 0.2;
+      torus1.rotation.z = count * 0.25;
+      torus1.rotation.y = count * 0.15;
 
-      torus.rotation.z = elapsedTime * 0.2;
-      torus.rotation.y = Math.cos(elapsedTime * 0.2) * 0.3;
+      ico1.rotation.x = -count * 0.2;
+      ico1.rotation.y = count * 0.3;
 
-      ico.rotation.x = elapsedTime * 0.18;
-      ico.rotation.y = elapsedTime * 0.22;
+      dustSystem.rotation.y = count * 0.05;
 
-      // Smooth camera gravitational tracking
-      camera.position.x += (mouseX - camera.position.x) * 0.04;
-      camera.position.y += (-mouseY + 20 - camera.position.y) * 0.04;
-      camera.lookAt(scene.position);
+      // Camera tilt interaction
+      camera.position.x += (mouseX - camera.position.x) * 0.05;
+      camera.position.y += (-mouseY + 40 - camera.position.y) * 0.05;
+      camera.lookAt(0, 0, -50);
 
       renderer.render(scene, camera);
     };
@@ -182,12 +195,14 @@ export default function Background3D() {
       }
       geometry.dispose();
       material.dispose();
-      sphereGeo.dispose();
-      torusGeo.dispose();
-      icoGeo.dispose();
-      wireMatBlue.dispose();
-      wireMatViolet.dispose();
-      wireMatCyan.dispose();
+      dustGeo.dispose();
+      dustMat.dispose();
+      sphere1.geometry.dispose();
+      torus1.geometry.dispose();
+      ico1.geometry.dispose();
+      wireBlue.dispose();
+      wirePurple.dispose();
+      wireCyan.dispose();
     };
   }, []);
 

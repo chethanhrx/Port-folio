@@ -52,20 +52,20 @@ export default function Projects() {
     : projectsList.filter((p) => p.category === selectedCategory);
 
   return (
-    <section id="projects" className="py-28 px-6 relative z-10 max-w-7xl mx-auto">
-      <div className="flex flex-col items-center text-center mb-16 relative">
-        <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/90 backdrop-blur-md border border-slate-300/80 text-slate-800 text-xs font-mono uppercase tracking-widest mb-6 shadow-sm">
-          <Layers size={16} className="text-blue-600" />
+    <section id="projects" className="py-32 px-6 relative z-10 max-w-7xl mx-auto">
+      <div className="flex flex-col items-center text-center mb-20 relative">
+        <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/90 backdrop-blur-md border border-slate-200/80 text-blue-600 text-xs font-mono uppercase tracking-widest mb-6 shadow-sm">
+          <Layers size={16} />
           <span className="font-extrabold">Featured Engineering Works</span>
         </div>
         
         <h2 className="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight mb-6">
           Systems & Applications <br />
-          <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-slate-900 bg-clip-text text-transparent">Architected for Scale</span>
+          <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Architected for Scale</span>
         </h2>
         
         <p className="text-slate-600 max-w-2xl text-base sm:text-lg leading-relaxed font-medium">
-          Click any card below to inspect its architectural blueprints, data flow, solved bottlenecks, and live telemetry. Showing real-time GitHub repository ratings.
+          Click any card below to inspect its architectural blueprints, data flow, solved bottlenecks, and live telemetry. Designed with clean Antigravity precision.
         </p>
       </div>
 
@@ -77,17 +77,17 @@ export default function Projects() {
             onClick={() => setSelectedCategory(category)}
             className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 flex items-center gap-2.5 shadow-sm transform hover:-translate-y-0.5 ${
               selectedCategory === category
-                ? 'bg-slate-900 text-white shadow-md'
-                : 'bg-white/90 backdrop-blur-md border border-slate-300/80 text-slate-700 hover:text-slate-950 hover:border-slate-400 hover:bg-slate-50'
+                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-glow-cyan'
+                : 'bg-white/90 backdrop-blur-md border border-slate-200/80 text-slate-600 hover:text-blue-600 hover:border-blue-500/50 hover:bg-blue-50/40'
             }`}
           >
             <span>{category}</span>
-            {selectedCategory === category && <Sparkles size={16} className="text-blue-400 animate-spin-slow" />}
+            {selectedCategory === category && <Sparkles size={16} className="animate-spin-slow" />}
           </button>
         ))}
       </div>
 
-      {/* Clean Luxury Antigravity Projects Grid */}
+      {/* Monolithic Antigravity Glass Grid */}
       <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <AnimatePresence>
           {filteredProjects.map((project) => (
@@ -99,68 +99,65 @@ export default function Projects() {
               transition={{ duration: 0.3 }}
               key={project.id}
               onClick={() => setActiveProject(project)}
-              className="group cursor-pointer rounded-3xl bg-white/90 backdrop-blur-2xl border border-slate-200/90 hover:border-slate-400 transition-all duration-500 shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_25px_55px_rgba(0,0,0,0.14)] overflow-hidden flex flex-col justify-between transform hover:-translate-y-2 relative"
+              className="group cursor-pointer rounded-3xl bg-white/80 backdrop-blur-2xl border border-slate-200/80 hover:border-blue-500 transition-all duration-500 shadow-[0_10px_35px_rgba(0,0,0,0.04)] hover:shadow-[0_25px_60px_rgba(37,99,235,0.16)] p-8 flex flex-col justify-between transform hover:-translate-y-2.5 relative overflow-hidden"
             >
-              {/* Top Banner Gradient (Sleek Antigravity Dark Carbon viewport) */}
-              <div className={`h-52 bg-gradient-to-tr ${project.previewColor} p-7 flex flex-col justify-between relative overflow-hidden border-b border-slate-100`}>
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.15),transparent_60%)] pointer-events-none" />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-300" />
-                
-                <div className="relative z-10 flex items-center justify-between">
-                  <span className="px-3.5 py-1.5 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-[11px] font-mono font-extrabold text-white shadow-sm">
+              {/* Subtle top glow bar on hover */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div>
+                {/* Header Row */}
+                <div className="flex items-center justify-between mb-6">
+                  <span className="px-3.5 py-1.5 rounded-full bg-blue-50/80 border border-blue-200/60 text-blue-600 font-mono text-xs font-extrabold shadow-2xs">
                     {project.category}
                   </span>
-                  <div className="w-10 h-10 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-white group-hover:text-slate-900 group-hover:scale-110 transition-all duration-300 shadow-md">
-                    <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
+                  <div className="w-11 h-11 rounded-2xl bg-slate-100/80 border border-slate-200/60 flex items-center justify-center text-slate-700 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 group-hover:scale-110 transition-all duration-300 shadow-sm">
+                    <ArrowRight size={18} className="transform group-hover:translate-x-0.5 transition-transform" />
                   </div>
                 </div>
 
-                <div className="relative z-10">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-2xl font-black text-white tracking-tight drop-shadow-sm">
-                      {project.title}
-                    </h3>
-                  </div>
-                  <span className="text-xs font-mono text-slate-300 font-bold drop-shadow-sm">{project.role} • {project.year}</span>
+                {/* Title & Role */}
+                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors mb-1.5">
+                  {project.title}
+                </h3>
+                <div className="text-xs font-mono text-slate-400 font-bold mb-5">
+                  {project.role} • <span className="text-slate-600">{project.year}</span>
                 </div>
-              </div>
 
-              {/* Card Body */}
-              <div className="p-7 flex-1 flex flex-col justify-between space-y-6">
-                <p className="text-slate-600 text-sm leading-relaxed line-clamp-3 font-medium">
+                {/* Description */}
+                <p className="text-slate-600 text-sm leading-relaxed line-clamp-3 font-medium mb-6">
                   {project.shortDescription}
                 </p>
+              </div>
 
-                {/* Tech Badges & Live GitHub Stats */}
-                <div className="space-y-4 pt-4 border-t border-slate-100">
-                  <div className="flex flex-wrap gap-2">
-                    {project.techStack.slice(0, 4).map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1.5 rounded-xl bg-slate-100/80 border border-slate-200/80 text-xs font-bold text-slate-700 group-hover:border-slate-400 group-hover:text-slate-950 transition-all shadow-2xs"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.techStack.length > 4 && (
-                      <span className="px-2.5 py-1.5 rounded-xl bg-slate-100 text-xs font-extrabold text-slate-500">
-                        +{project.techStack.length - 4}
-                      </span>
-                    )}
-                  </div>
-
-                  {project.stats && (
-                    <div className="flex items-center justify-between text-xs font-mono text-slate-500 pt-2">
-                      <span className="flex items-center gap-1.5 font-extrabold text-slate-700 bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200/60">
-                        <Star size={14} className="fill-amber-400 text-amber-500" />
-                        {project.stats.stars} Real Stars
-                      </span>
-                      <span className="flex items-center gap-1 text-slate-600 font-bold hover:text-blue-600" onClick={(e) => { e.stopPropagation(); window.open(project.githubUrl, '_blank'); }}>
-                        <Github size={14} /> Repository &rarr;
-                      </span>
-                    </div>
+              {/* Tech Badges & Live GitHub Stats */}
+              <div className="space-y-4 pt-5 border-t border-slate-100">
+                <div className="flex flex-wrap gap-2">
+                  {project.techStack.slice(0, 4).map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs font-bold text-slate-700 group-hover:border-blue-500/40 group-hover:text-blue-600 group-hover:bg-blue-50/40 transition-all shadow-2xs"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                  {project.techStack.length > 4 && (
+                    <span className="px-2.5 py-1.5 rounded-xl bg-slate-100 text-xs font-extrabold text-slate-500">
+                      +{project.techStack.length - 4}
+                    </span>
                   )}
                 </div>
+
+                {project.stats && (
+                  <div className="flex items-center justify-between text-xs font-mono text-slate-500 pt-1">
+                    <span className="flex items-center gap-1.5 font-extrabold text-slate-700 bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200/60">
+                      <Star size={14} className="fill-amber-400 text-amber-500" />
+                      {project.stats.stars} Verified Stars
+                    </span>
+                    <span className="flex items-center gap-1 text-slate-600 font-bold hover:text-blue-600 transition-colors" onClick={(e) => { e.stopPropagation(); window.open(project.githubUrl, '_blank'); }}>
+                      <Github size={14} /> Repository &rarr;
+                    </span>
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}

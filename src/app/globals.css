@@ -4,7 +4,11 @@
 
 @layer base {
   body {
-    background: radial-gradient(circle at 50% 0%, #ffffff 0%, #f3f6fa 55%, #e8edf5 100%);
+    background: #f4f6f9;
+    background-image: 
+      radial-gradient(at 15% 15%, rgba(37, 99, 235, 0.1) 0px, transparent 55%),
+      radial-gradient(at 85% 15%, rgba(124, 58, 237, 0.1) 0px, transparent 55%),
+      radial-gradient(at 50% 85%, rgba(8, 145, 178, 0.08) 0px, transparent 60%);
     @apply text-[#0f172a] antialiased selection:bg-[#2563eb] selection:text-white overflow-x-hidden min-h-screen;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
@@ -14,10 +18,12 @@
   }
 }
 
-/* Antigravity AI Matrix Dot Grid */
+/* Antigravity AI High-Precision Grid Pattern */
 .bg-grid-pattern {
-  background-size: 32px 32px;
-  background-image: radial-gradient(circle, rgba(15, 23, 42, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.045) 1px, transparent 1px);
 }
 
 /* Custom scrollbar */
