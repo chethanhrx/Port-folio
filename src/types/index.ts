@@ -13,6 +13,7 @@ export interface Project {
   year: string;
   role: string;
   previewColor: string;
+  featured?: boolean;
   stats?: {
     stars: number;
     forks: number;
@@ -38,6 +39,7 @@ export interface GithubStats {
   followers: number;
   stars: number;
   topLanguages: string[];
+  publicRepos?: Array<{ name: string; stars: number; forks: number; language: string; description: string; url: string; updatedAt: string }>;
 }
 
 export interface LeetCodeStats {
@@ -46,4 +48,15 @@ export interface LeetCodeStats {
   medium: number;
   hard: number;
   ranking: string;
+  totalSubmissions: number;
+  easySubmissions: number;
+  mediumSubmissions: number;
+  hardSubmissions: number;
+  acceptanceRate: number;
+  streak: number;
+  contestRating: number;
+  contestGlobalRanking: number;
+  contestTopPercentage: number;
+  totalProblems: number;
+  recentActivity: Array<{ title: string; titleSlug: string; difficulty: string; status: string; timestamp: number }>;
 }

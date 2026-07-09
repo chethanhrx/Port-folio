@@ -15,31 +15,35 @@ export default function ErrorBoundary({
   }, [error]);
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-6 bg-black text-white relative z-50">
-      <div className="max-w-md w-full p-8 rounded-3xl glass-card text-center space-y-6">
-        <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 mx-auto flex items-center justify-center">
+    <div className="min-h-screen w-full flex items-center justify-center p-6 bg-[#141213] text-[#FFEBD3] relative z-50 bg-grain">
+      <div className="max-w-md w-full p-8 rounded-2xl bg-[#181617] border border-[#262223] text-center space-y-6 shadow-2xl">
+        <div className="w-16 h-16 rounded-xl bg-[#FFB6A6]/15 border border-[#FFB6A6]/40 text-[#FFB6A6] mx-auto flex items-center justify-center">
           <AlertTriangle size={32} />
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-2xl font-black tracking-tight text-white">
-            System Glitch Detected
+          <span className="font-mono text-xs text-[#9BCEC1] uppercase tracking-widest font-extrabold">
+            SYSTEM EXCEPTION // DETECTED
+          </span>
+          <h2 className="text-2xl font-black tracking-tight text-[#FFEBD3] uppercase">
+            Runtime Architecture Error
           </h2>
-          <p className="text-sm font-medium text-white/50 leading-relaxed">
-            An unexpected error occurred while rendering the interface. This usually happens during active development reloads.
+          <p className="text-sm font-normal text-[#FFEBD3]/75 leading-relaxed">
+            An unexpected error occurred while rendering this interface module. Please reload the runtime pipeline.
           </p>
         </div>
 
-        <div className="p-3 rounded-xl bg-white/[0.03] border border-white/5 text-left font-mono text-xs text-white/40 overflow-x-auto">
+        <div className="p-3 rounded-lg bg-[#141213] border border-[#262223] text-left font-mono text-xs text-[#FFEBD3]/70 overflow-x-auto">
+          <span className="text-[#FFB6A6] font-bold">Error: </span>
           {error.message || 'Unknown runtime exception'}
         </div>
 
         <button
           onClick={() => reset()}
-          className="w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-extrabold text-sm flex items-center justify-center gap-2 transition-all shadow-glow-cyan transform hover:-translate-y-0.5"
+          className="w-full py-4 rounded-sm bg-[#FFB6A6] hover:bg-[#FFEBD3] text-[#141213] font-black text-sm flex items-center justify-center gap-2 transition-all shadow-xl shadow-[#FFB6A6]/20 tracking-wider uppercase cursor-pointer"
         >
           <RefreshCw size={18} />
-          <span>Reload & Restore Interface</span>
+          <span>Reload Interface Pipeline</span>
         </button>
       </div>
     </div>

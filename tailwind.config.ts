@@ -33,8 +33,8 @@ const config: Config = {
           "100%": { transform: "translateX(100%)" },
         },
         glow: {
-          "0%": { boxShadow: "0 0 20px rgba(0, 229, 255, 0.3)" },
-          "100%": { boxShadow: "0 0 40px rgba(0, 229, 255, 0.6)" },
+          "0%": { boxShadow: "0 0 20px rgba(255, 152, 0, 0.3)" },
+          "100%": { boxShadow: "0 0 40px rgba(255, 152, 0, 0.6)" },
         },
         orbit: {
           "0%": { transform: "rotate(0deg) translateX(120px) rotate(0deg)" },
@@ -42,16 +42,17 @@ const config: Config = {
         },
       },
       boxShadow: {
-        "glow-cyan": "0 0 30px rgba(0, 229, 255, 0.4), 0 0 60px rgba(0, 229, 255, 0.15)",
-        "glow-purple": "0 0 30px rgba(168, 85, 247, 0.4), 0 0 60px rgba(168, 85, 247, 0.15)",
-        "glow-pink": "0 0 30px rgba(236, 72, 153, 0.4)",
+        "glow-cyan": "0 0 30px rgba(255, 136, 0, 0.4), 0 0 60px rgba(255, 85, 0, 0.15)",
+        "glow-amber": "0 0 30px rgba(255, 183, 77, 0.4), 0 0 60px rgba(255, 152, 0, 0.15)",
+        "glow-purple": "0 0 30px rgba(255, 85, 0, 0.4), 0 0 60px rgba(204, 34, 0, 0.15)",
+        "glow-pink": "0 0 30px rgba(204, 34, 0, 0.4)",
         "card-glass": "0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
-        "card-hover": "0 25px 60px rgba(0, 229, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.08)",
+        "card-hover": "0 25px 60px rgba(255, 152, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.08)",
         "luxury": "0 10px 30px -10px rgba(0, 0, 0, 0.5)",
         "luxury-lg": "0 25px 60px -15px rgba(0, 0, 0, 0.6)",
       },
       backgroundImage: {
-        'galaxy-gradient': 'radial-gradient(ellipse at center, rgba(0, 229, 255, 0.08) 0%, rgba(168, 85, 247, 0.05) 40%, transparent 70%)',
+        'galaxy-gradient': 'radial-gradient(ellipse at center, rgba(255, 136, 0, 0.08) 0%, rgba(204, 34, 0, 0.05) 40%, transparent 70%)',
       },
     },
   },

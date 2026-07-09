@@ -6,15 +6,14 @@ export async function GET() {
     followers: 45,
     stars: 0,
     topLanguages: ['Java', 'TypeScript', 'Python', 'JavaScript', 'Spring Boot', 'React'],
-    repoStats: {}
+    repoStats: {},
+    publicRepos: [] as Array<{ name: string; stars: number; forks: number; language: string; description: string; url: string; updatedAt: string }>
   };
 
   try {
-    const [userRes, reposRes1, reposRes2, reposRes3] = await Promise.all([
+    const [userRes, reposRes] = await Promise.all([
       fetch('https://api.github.com/users/chethanhrx', { next: { revalidate: 1800 } }),
-      fetch('https://api.github.com/users/chethanhrx/repos?per_page=100', { next: { revalidate: 1800 } }),
-      fetch('https://api.github.com/repos/Harxshz7/ITC-bot', { next: { revalidate: 1800 } }),
-      fetch('https://api.github.com/repos/OrtexDevs/Event-Bridge', { next: { revalidate: 1800 } })
+      fetch('https://api.github.com/users/chethanhrx/repos?per_page=100&type=public&sort=updated&direction=desc', { next: { revalidate: 1800 } }),
     ]);
 
     let userData: any = {};
@@ -25,44 +24,40 @@ export async function GET() {
     let totalStars = 0;
     const langCounts: Record<string, number> = {};
     const repoStats: Record<string, { stars: number; forks: number; language: string }> = {};
+    const publicRepos: Array<{ name: string; stars: number; forks: number; language: string; description: string; url: string; updatedAt: string }> = [];
 
-    if (reposRes1.ok) {
-      const reposData = await reposRes1.json();
+    if (reposRes.ok) {
+      const reposData = await reposRes.json();
       if (Array.isArray(reposData)) {
-        reposData.forEach((repo: any) => {
-          const stars = repo.stargazers_count || 0;
-          const forks = repo.forks_count || 0;
-          totalStars += stars;
-          if (repo.language) {
-            langCounts[repo.language] = (langCounts[repo.language] || 0) + 1;
-          }
-          repoStats[repo.name.toLowerCase()] = {
-            stars,
-            forks,
-            language: repo.language || 'Code'
-          };
-        });
+        // Only include public, non-forked repos
+        reposData
+          .filter((repo: any) => !repo.fork && repo.private === false)
+          .forEach((repo: any) => {
+            const stars = repo.stargazers_count || 0;
+            const forks = repo.forks_count || 0;
+            totalStars += stars;
+
+            if (repo.language) {
+              langCounts[repo.language] = (langCounts[repo.language] || 0) + 1;
+            }
+
+            repoStats[repo.name.toLowerCase()] = {
+              stars,
+              forks,
+              language: repo.language || 'Code'
+            };
+
+            publicRepos.push({
+              name: repo.name,
+              stars,
+              forks,
+              language: repo.language || 'Code',
+              description: repo.description || '',
+              url: repo.html_url,
+              updatedAt: repo.updated_at || ''
+            });
+          });
       }
-    }
-
-    if (reposRes2.ok) {
-      const r2 = await reposRes2.json();
-      repoStats['itc-bot'] = {
-        stars: r2.stargazers_count || 0,
-        forks: r2.forks_count || 0,
-        language: r2.language || 'Python'
-      };
-      totalStars += r2.stargazers_count || 0;
-    }
-
-    if (reposRes3.ok) {
-      const r3 = await reposRes3.json();
-      repoStats['event-bridge'] = {
-        stars: r3.stargazers_count || 0,
-        forks: r3.forks_count || 0,
-        language: r3.language || 'TypeScript'
-      };
-      totalStars += r3.stargazers_count || 0;
     }
 
     const sortedLanguages = Object.entries(langCounts)
@@ -70,12 +65,16 @@ export async function GET() {
       .map(([lang]) => lang)
       .slice(0, 6);
 
+    // Count only public non-fork repos
+    const publicRepoCount = publicRepos.length;
+
     return NextResponse.json({
-      repos: userData.public_repos || 28,
-      followers: userData.followers || 45,
+      repos: publicRepoCount || userData.public_repos || fallbackData.repos,
+      followers: userData.followers || fallbackData.followers,
       stars: totalStars,
       topLanguages: sortedLanguages.length > 0 ? sortedLanguages : fallbackData.topLanguages,
-      repoStats
+      repoStats,
+      publicRepos: publicRepos.slice(0, 20) // Top 20 most recently updated
     });
   } catch (error) {
     return NextResponse.json(fallbackData);

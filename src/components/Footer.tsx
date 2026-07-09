@@ -9,33 +9,33 @@ export default function Footer() {
   };
 
   return (
-    <footer className="py-16 px-6 relative z-10 bg-black/80 border-t border-white/5 overflow-hidden backdrop-blur-xl">
+    <footer className="py-16 px-6 relative z-10 bg-[#141213] border-t border-[#262223] overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
         
         <div className="flex items-center gap-3.5">
-          <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
-            <Terminal size={22} className="stroke-[2.5]" />
+          <div className="w-11 h-11 rounded-sm bg-[#FFB6A6] text-[#141213] font-mono font-black text-base flex items-center justify-center border border-[#FFEBD3]">
+            CH
           </div>
           <div>
-            <span className="font-black text-white text-base tracking-tight block">
+            <span className="font-black text-[#FFEBD3] text-base tracking-tight block uppercase">
               Chethan Kumar H R
             </span>
-            <span className="text-xs text-white/30 font-mono font-semibold">© {new Date().getFullYear()} • All Rights Reserved</span>
+            <span className="text-xs text-[#9BCEC1] font-mono font-bold uppercase tracking-wider">© {new Date().getFullYear()} • ORTEX FOUNDER & SYSTEM ARCHITECT</span>
           </div>
         </div>
 
-        <div className="text-xs font-mono text-white/40 flex items-center gap-2 bg-white/[0.03] px-6 py-3 rounded-full border border-white/[0.06] font-bold">
-          <span>Engineered with Next.js & Three.js</span>
-          <span className="text-cyan-400">•</span>
-          <span className="text-white/60 font-extrabold">Write code that speaks for itself.</span>
+        <div className="text-xs font-mono text-[#FFEBD3]/70 flex items-center gap-2.5 bg-[#181617] px-6 py-3 rounded-sm border border-[#262223] font-bold uppercase tracking-wider">
+          <span>Engineered with Next.js & Framer Motion</span>
+          <span className="text-[#FFB6A6]">•</span>
+          <span className="text-[#FFEBD3] font-black">Architecture First. Zero Compromise.</span>
         </div>
 
         <button
           onClick={scrollToTop}
-          className="p-4 rounded-2xl bg-white/[0.04] border border-white/[0.08] hover:border-cyan-500/30 hover:bg-cyan-500/10 hover:text-cyan-400 text-white/50 transition-all group flex items-center gap-2 text-xs font-mono font-extrabold"
+          className="px-6 py-3.5 rounded-sm bg-[#181617] border border-[#262223] hover:border-[#FFB6A6] hover:bg-[#FFB6A6] hover:text-[#141213] text-[#FFEBD3] transition-all duration-300 group flex items-center gap-2 text-xs font-mono font-black uppercase tracking-wider cursor-pointer shadow-md"
         >
-          <span>Back to Top</span>
-          <ArrowUp size={16} className="transform group-hover:-translate-y-1 transition-transform text-cyan-400" />
+          <span>Return To Master Top</span>
+          <ArrowUp size={16} className="transform group-hover:-translate-y-0.5 transition-transform text-[#9BCEC1] group-hover:text-[#141213]" />
         </button>
 
       </div>

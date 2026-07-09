@@ -9,13 +9,11 @@ import Experience from '@/components/Experience';
 import Resources from '@/components/Resources';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import Background3D from '@/components/Background3D';
 
 export default function Home() {
+
   return (
-    <main className="relative min-h-screen bg-transparent overflow-hidden">
-      {/* 3D Galaxy Blackhole WebGL Background */}
-      <Background3D />
+    <main className="relative min-h-screen bg-[#141213] text-[#FFEBD3] overflow-x-hidden selection:bg-[#FFB6A6] selection:text-[#141213]">
 
       {/* Navigation Header */}
       <Navbar />

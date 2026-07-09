@@ -1,171 +1,184 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Layers, Sparkles, Github, Star } from 'lucide-react';
-import { PROJECTS_DATA } from '../data/projects';
-import { Project } from '../types';
+import { Sparkles, ArrowRight, Github, Star, Layers, CheckCircle2, Cpu } from 'lucide-react';
+import { PROJECTS_DATA as projectsData } from '@/data/projects';
+import { Project } from '@/types';
 import ProjectModal from './ProjectModal';
+import GravityCard from './GravityCard';
 
 export default function Projects() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('All Projects');
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [activeProject, setActiveProject] = useState<Project | null>(null);
-  const [projectsList, setProjectsList] = useState<Project[]>(PROJECTS_DATA);
 
-  useEffect(() => {
-    fetch('/api/github')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.repoStats) {
-          setProjectsList((prev) =>
-            prev.map((p) => {
-              const lookupKey = p.id === 'watchtower' ? 'watch-tower' : p.id === 'neuramate' ? 'neura-mate' : p.id === 'eventbridge' ? 'event-bridge' : p.id;
-              const liveStats = data.repoStats[lookupKey];
-              if (liveStats) {
-                return {
-                  ...p,
-                  stats: {
-                    stars: liveStats.stars,
-                    forks: liveStats.forks,
-                    language: liveStats.language || p.stats?.language || 'Code'
-                  }
-                };
-              }
-              return p;
-            })
-          );
-        }
-      })
-      .catch((err) => console.error('Error fetching live github stars:', err));
-  }, []);
+  const categories = ['All', ...Array.from(new Set(projectsData.map((p) => p.category)))];
 
-  const categories = [
-    'All Projects',
-    'Backend / Microservices',
-    'Full Stack Apps',
-    'AI / ML Integrated',
-    'Tools & Automation'
-  ];
-
-  const filteredProjects = selectedCategory === 'All Projects'
-    ? projectsList
-    : projectsList.filter((p) => p.category === selectedCategory);
+  const filteredProjects =
+    selectedCategory === 'All'
+      ? projectsData
+      : projectsData.filter((p) => p.category === selectedCategory);
 
   return (
-    <section id="projects" className="py-32 px-6 relative z-10 max-w-7xl mx-auto">
-      <div className="flex flex-col items-center text-center mb-20 relative">
-        <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/[0.04] backdrop-blur-md border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-widest mb-6">
-          <Layers size={16} />
-          <span className="font-extrabold">Featured Engineering Works</span>
+    <section id="projects" className="py-28 px-6 max-w-7xl mx-auto relative z-10">
+      {/* Header Section */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-[#262223] pb-8">
+        <div>
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-sm bg-[#181617] border border-[#9BCEC1]/40 text-[#9BCEC1] text-xs font-mono font-black mb-4 shadow-sm tracking-widest uppercase">
+            <Sparkles size={13} className="text-[#FFB6A6]" />
+            <span>ENGINEERING BLUEPRINTS // SYSTEMS ARCHITECTURE</span>
+          </div>
+          <h2 className="text-4xl sm:text-6xl font-black tracking-tight text-[#FFEBD3] uppercase">
+            Featured <span className="text-[#FFB6A6]">Architectures</span>
+          </h2>
         </div>
-        
-        <h2 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-6">
-          Systems & Applications <br />
-          <span className="galaxy-text">Architected for Scale</span>
-        </h2>
-        
-        <p className="text-white/40 max-w-2xl text-base sm:text-lg leading-relaxed font-medium">
-          Click any card below to inspect its architectural blueprints, data flow, solved bottlenecks, and live telemetry.
+        <p className="text-[#FFEBD3]/75 text-base max-w-md font-normal leading-relaxed font-sans">
+          Production-grade microservices, high-throughput event engines, and distributed topologies built for zero downtime.
         </p>
       </div>
 
-      {/* Filterable Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
+      {/* Category Filter Tabs */}
+      <div className="flex flex-wrap items-center gap-3 mb-16">
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 flex items-center gap-2.5 transform hover:-translate-y-0.5 ${
+            className={`px-6 py-3 rounded-sm text-xs sm:text-sm font-mono font-black tracking-wider uppercase transition-all duration-300 flex items-center gap-2 cursor-pointer ${
               selectedCategory === category
-                ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-glow-cyan'
-                : 'bg-white/[0.04] backdrop-blur-md border border-white/[0.08] text-white/50 hover:text-cyan-400 hover:border-cyan-500/30'
+                ? 'bg-[#FFB6A6] text-[#141213] shadow-lg shadow-[#FFB6A6]/20 border border-[#FFB6A6]'
+                : 'bg-[#181617] border border-[#262223] text-[#FFEBD3]/75 hover:text-[#9BCEC1] hover:border-[#9BCEC1]/60'
             }`}
           >
             <span>{category}</span>
-            {selectedCategory === category && <Sparkles size={16} className="animate-spin-slow" />}
+            {selectedCategory === category && <span className="w-1.5 h-1.5 rounded-full bg-[#141213]" />}
           </button>
         ))}
       </div>
 
-      {/* Projects Grid */}
+      {/* Solid Architectural Asymmetric Bento Grid */}
       <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <AnimatePresence>
-          {filteredProjects.map((project) => (
-            <motion.div
-              layout
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-              key={project.id}
-              onClick={() => setActiveProject(project)}
-              className="group cursor-pointer rounded-3xl glass-card glass-card-hover transition-all duration-500 p-8 flex flex-col justify-between transform hover:-translate-y-2.5 relative overflow-hidden"
-            >
-              {/* Top glow bar on hover */}
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          {filteredProjects.map((project, idx) => {
+            const isFeaturedLarge = idx === 0 || project.featured;
 
-              <div>
-                {/* Header Row */}
-                <div className="flex items-center justify-between mb-6">
-                  <span className="px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-xs font-extrabold">
-                    {project.category}
-                  </span>
-                  <div className="w-11 h-11 rounded-2xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-white/50 group-hover:bg-cyan-500 group-hover:text-white group-hover:border-cyan-500 group-hover:scale-110 transition-all duration-300">
-                    <ArrowRight size={18} className="transform group-hover:translate-x-0.5 transition-transform" />
+            return (
+              <motion.div
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                key={project.id}
+                className={isFeaturedLarge ? 'md:col-span-2 lg:col-span-2' : 'col-span-1'}
+              >
+                <GravityCard
+                  onClick={() => setActiveProject(project)}
+                  className={`group cursor-pointer rounded-sm bg-[#181617] border border-[#262223] hover:border-[#FFB6A6] hover:bg-[#1D1B1C] transition-all duration-500 p-8 lg:p-10 flex flex-col justify-between relative overflow-hidden h-full shadow-2xl ${
+                    isFeaturedLarge ? 'border-[#FFB6A6]/40 bg-[#1A1819]' : ''
+                  }`}
+                >
+                  {/* Top solid accent line indicator */}
+                  <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#FFB6A6] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <div className="space-y-6">
+                    {/* Header Row: Index number & Category tag */}
+                    <div className="flex items-center justify-between border-b border-[#262223] pb-4">
+                      <div className="flex items-center gap-3">
+                        <span className="font-mono text-xs font-black text-[#9BCEC1] tracking-widest uppercase">
+                          [0{idx + 1}] // {project.category}
+                        </span>
+                        {isFeaturedLarge && (
+                          <span className="px-3 py-1 rounded-sm bg-[#FFEBD3] text-[#141213] font-mono text-[10px] font-black uppercase tracking-widest flex items-center gap-1 shadow-sm">
+                            <Star size={11} className="fill-[#141213] text-[#141213]" /> Featured System
+                          </span>
+                        )}
+                      </div>
+                      <div className="w-10 h-10 rounded-sm bg-[#141213] border border-[#262223] flex items-center justify-center text-[#FFEBD3]/70 group-hover:bg-[#FFB6A6] group-hover:text-[#141213] group-hover:border-[#FFB6A6] transition-all duration-300">
+                        <ArrowRight size={17} className="transform group-hover:translate-x-0.5 transition-transform" />
+                      </div>
+                    </div>
+
+                    {/* Title & Role */}
+                    <div>
+                      <h3 className={`${isFeaturedLarge ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl'} font-black text-[#FFEBD3] tracking-tight group-hover:text-[#FFB6A6] transition-colors mb-2`}>
+                        {project.title}
+                      </h3>
+                      <div className="text-xs font-mono text-[#FFEBD3]/70 font-bold uppercase tracking-wider">
+                        ROLE: <span className="text-[#FFEBD3] font-black">{project.role}</span> • DEPLOYED: <span className="text-[#67A2C5] font-black">{project.year}</span>
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p className={`text-[#FFEBD3]/85 text-sm leading-relaxed font-normal ${isFeaturedLarge ? 'max-w-2xl text-base' : 'line-clamp-3'}`}>
+                      {project.shortDescription}
+                    </p>
+
+                    {/* Architectural Highlights / Telemetry preview for large cards */}
+                    {isFeaturedLarge && (
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 rounded-sm bg-[#141213] border border-[#262223] font-mono text-xs">
+                        <div className="flex items-center gap-2.5 text-[#FFEBD3] font-bold">
+                          <CheckCircle2 size={15} className="text-[#9BCEC1] flex-shrink-0" />
+                          <span>Zero-Downtime Pipeline</span>
+                        </div>
+                        <div className="flex items-center gap-2.5 text-[#FFEBD3] font-bold">
+                          <Cpu size={15} className="text-[#FFB6A6] flex-shrink-0" />
+                          <span>High-Concurrency I/O</span>
+                        </div>
+                        <div className="flex items-center gap-2.5 text-[#FFEBD3] font-bold">
+                          <Layers size={15} className="text-[#67A2C5] flex-shrink-0" />
+                          <span>Event-Driven Architecture</span>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </div>
 
-                {/* Title & Role */}
-                <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-cyan-400 transition-colors mb-1.5">
-                  {project.title}
-                </h3>
-                <div className="text-xs font-mono text-white/30 font-bold mb-5">
-                  {project.role} • <span className="text-white/50">{project.year}</span>
-                </div>
+                  {/* Tech Badges & Live GitHub Stats */}
+                  <div className="space-y-4 pt-6 mt-6 border-t border-[#262223]">
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.slice(0, isFeaturedLarge ? 7 : 4).map((tech, i) => (
+                        <span
+                          key={i}
+                          className="px-3.5 py-1.5 rounded-sm bg-[#141213] border border-[#262223] text-xs font-mono font-bold text-[#FFEBD3]/90 group-hover:border-[#67A2C5]/60 group-hover:text-[#67A2C5] transition-all"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.techStack.length > (isFeaturedLarge ? 7 : 4) && (
+                        <span className="px-2.5 py-1.5 rounded-sm bg-[#141213] text-xs font-mono font-black text-[#FFEBD3]/60">
+                          +{project.techStack.length - (isFeaturedLarge ? 7 : 4)}
+                        </span>
+                      )}
+                    </div>
 
-                {/* Description */}
-                <p className="text-white/40 text-sm leading-relaxed line-clamp-3 font-medium mb-6">
-                  {project.shortDescription}
-                </p>
-              </div>
-
-              {/* Tech Badges & Live GitHub Stats */}
-              <div className="space-y-4 pt-5 border-t border-white/5">
-                <div className="flex flex-wrap gap-2">
-                  {project.techStack.slice(0, 4).map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-xs font-bold text-white/60 group-hover:border-cyan-500/30 group-hover:text-cyan-400 transition-all"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.techStack.length > 4 && (
-                    <span className="px-2.5 py-1.5 rounded-xl bg-white/[0.06] text-xs font-extrabold text-white/40">
-                      +{project.techStack.length - 4}
-                    </span>
-                  )}
-                </div>
-
-                {project.stats && (
-                  <div className="flex items-center justify-between text-xs font-mono text-white/40 pt-1">
-                    <span className="flex items-center gap-1.5 font-extrabold text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-lg border border-amber-500/20">
-                      <Star size={14} className="fill-amber-400 text-amber-400" />
-                      {project.stats.stars} Verified Stars
-                    </span>
-                    <span className="flex items-center gap-1 text-white/50 font-bold hover:text-cyan-400 transition-colors" onClick={(e) => { e.stopPropagation(); window.open(project.githubUrl, '_blank'); }}>
-                      <Github size={14} /> Repository &rarr;
-                    </span>
+                    {project.stats && (
+                      <div className="flex items-center justify-between text-xs font-mono text-[#FFEBD3]/70 pt-2 border-t border-[#262223]/50">
+                        <span className="flex items-center gap-1.5 font-extrabold text-[#67A2C5] bg-[#67A2C5]/15 px-3 py-1 rounded-sm border border-[#67A2C5]/40 tracking-wider uppercase">
+                          <Star size={13} className="fill-[#67A2C5] text-[#67A2C5]" />
+                          {project.stats.stars} Verified Stars
+                        </span>
+                        <span
+                          className="flex items-center gap-1 text-[#FFEBD3] font-black hover:text-[#FFB6A6] transition-colors tracking-wider uppercase"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.open(project.githubUrl, '_blank');
+                          }}
+                        >
+                          <Github size={14} /> Repository &rarr;
+                        </span>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            </motion.div>
-          ))}
+                </GravityCard>
+              </motion.div>
+            );
+          })}
         </AnimatePresence>
       </motion.div>
 
-      {/* Project Detail Modal */}
-      <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
+      {/* Project Details Modal */}
+      {activeProject && (
+        <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
+      )}
     </section>
   );
 }

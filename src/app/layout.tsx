@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Chethan Kumar H R | Java Full Stack Developer & System Architect",
   description: "Official portfolio of Chethan Kumar H R (chethanhrx) — Java Full Stack Developer & AI System Architect specializing in Spring Boot, Microservices, React, and high-concurrency systems.",
   keywords: [
+    // Old keywords exactly as they were
     "chethan kumar hr",
     "chethan hr",
     "chethanhrx",
@@ -21,12 +22,24 @@ export const metadata: Metadata = {
     "React",
     "Microservices",
     "System Architecture",
-    "Bangalore Developer"
+    "Bangalore Developer",
+    // New requested keywords
+    "ortex owner",
+    "ortex founder",
+    "chethan hr ortex",
+    "chethan kumar h r",
+    "chethan hr ortex studio",
+    "chethan kumar hr ortex",
+    "chethan hr portfolio",
+    "chethan hr jspiders",
+    "chethan kumar hr software engineer",
+    "chethan hrx portfolio",
+    "chethan kumar hr resume"
   ],
   authors: [{ name: "Chethan Kumar H R", url: "https://github.com/chethanhrx" }],
   creator: "Chethan Kumar H R",
   openGraph: {
-    title: "Chethan Kumar H R | Java Full Stack Developer",
+    title: "Chethan Kumar H R | Java Full Stack Developer & Ortex Founder",
     description: "Official portfolio of Chethan Kumar H R (chethanhrx). Explore live projects, system architecture diagrams, and enterprise microservices.",
     url: "https://chethanhrx.netlify.app",
     siteName: "Chethan Kumar H R Portfolio",
@@ -34,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chethan Kumar H R | Java Full Stack Developer",
+    title: "Chethan Kumar H R | Java Full Stack Developer & Ortex Founder",
     description: "Official portfolio of Chethan Kumar H R (chethanhrx). Explore live projects, system architecture diagrams, and enterprise microservices.",
   },
   robots: {
@@ -65,7 +78,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark scroll-smooth">
-      <body className="min-h-screen bg-black text-white font-sans antialiased relative selection:bg-cyan-500/30 selection:text-white overflow-x-hidden">
+      <body className="min-h-screen bg-[#141213] text-[#FFEBD3] font-sans antialiased relative selection:bg-[#FFB6A6] selection:text-[#141213] overflow-x-hidden">
         {children}
       </body>
     </html>
