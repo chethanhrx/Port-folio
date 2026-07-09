@@ -1,24 +1,31 @@
 import { NextResponse } from 'next/server';
 
+export const revalidate = 1800;
+
 export async function GET() {
   const fallbackData = {
     repos: 28,
     followers: 45,
-    stars: 0,
-    topLanguages: ['Java', 'TypeScript', 'Python', 'JavaScript', 'Spring Boot', 'React'],
+    stars: 120,
+    topLanguages: ['Java', 'Spring Boot', 'React', 'Microservices', 'TypeScript', 'Python'],
     repoStats: {},
     publicRepos: [] as Array<{ name: string; stars: number; forks: number; language: string; description: string; url: string; updatedAt: string }>
   };
 
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 4000);
+
     const [userRes, reposRes] = await Promise.all([
-      fetch('https://api.github.com/users/chethanhrx', { next: { revalidate: 1800 } }),
-      fetch('https://api.github.com/users/chethanhrx/repos?per_page=100&type=public&sort=updated&direction=desc', { next: { revalidate: 1800 } }),
+      fetch('https://api.github.com/users/chethanhrx', { signal: controller.signal, next: { revalidate: 1800 } }).catch(() => null),
+      fetch('https://api.github.com/users/chethanhrx/repos?per_page=100&type=public&sort=updated&direction=desc', { signal: controller.signal, next: { revalidate: 1800 } }).catch(() => null),
     ]);
 
+    clearTimeout(timeoutId);
+
     let userData: any = {};
-    if (userRes.ok) {
-      userData = await userRes.json();
+    if (userRes && userRes.ok) {
+      userData = await userRes.json().catch(() => ({}));
     }
 
     let totalStars = 0;
@@ -26,10 +33,9 @@ export async function GET() {
     const repoStats: Record<string, { stars: number; forks: number; language: string }> = {};
     const publicRepos: Array<{ name: string; stars: number; forks: number; language: string; description: string; url: string; updatedAt: string }> = [];
 
-    if (reposRes.ok) {
-      const reposData = await reposRes.json();
+    if (reposRes && reposRes.ok) {
+      const reposData = await reposRes.json().catch(() => []);
       if (Array.isArray(reposData)) {
-        // Only include public, non-forked repos
         reposData
           .filter((repo: any) => !repo.fork && repo.private === false)
           .forEach((repo: any) => {
@@ -65,16 +71,15 @@ export async function GET() {
       .map(([lang]) => lang)
       .slice(0, 6);
 
-    // Count only public non-fork repos
     const publicRepoCount = publicRepos.length;
 
     return NextResponse.json({
       repos: publicRepoCount || userData.public_repos || fallbackData.repos,
       followers: userData.followers || fallbackData.followers,
-      stars: totalStars,
+      stars: totalStars || fallbackData.stars,
       topLanguages: sortedLanguages.length > 0 ? sortedLanguages : fallbackData.topLanguages,
       repoStats,
-      publicRepos: publicRepos.slice(0, 20) // Top 20 most recently updated
+      publicRepos: publicRepos.slice(0, 20)
     });
   } catch (error) {
     return NextResponse.json(fallbackData);

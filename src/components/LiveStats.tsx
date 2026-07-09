@@ -62,39 +62,39 @@ export default function LiveStats() {
   useEffect(() => {
     async function fetchStats() {
       try {
-        const [ghRes, lcRes] = await Promise.all([
-          fetch('/api/github'),
-          fetch('/api/leetcode')
-        ]);
+        const ghRes = await fetch('/api/github');
         if (ghRes.ok) {
           const ghData = await ghRes.json();
-          if (ghData && ghData.repos !== undefined) {
-            setGithubStats(ghData);
-          }
+          setGithubStats(ghData);
         }
+      } catch (err) {
+        console.error('Failed to load GitHub stats:', err);
+      }
+
+      try {
+        const lcRes = await fetch('/api/leetcode');
         if (lcRes.ok) {
           const lcData = await lcRes.json();
-          if (lcData && lcData.solved !== undefined) {
-            setLeetcodeStats(lcData);
-          }
+          setLeetcodeStats(lcData);
         }
-      } catch (e) {
-        console.error('Telemetry Sync Error:', e);
+      } catch (err) {
+        console.error('Failed to load LeetCode stats:', err);
       }
     }
+
     fetchStats();
   }, []);
 
   return (
-    <section className="py-16 px-6 relative z-10">
+    <section className="pt-24 pb-12 px-6 relative z-10 bg-[#FFEBD3] text-[#141213] border-t border-[#141213] overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-center gap-3 mb-10 justify-center">
-          <div className="section-divider w-16 bg-[#262223]" />
-          <span className="px-5 py-2 rounded-sm bg-[#181617] text-xs font-mono tracking-widest text-[#9BCEC1] flex items-center gap-2 font-black shadow-sm border border-[#9BCEC1]/40 uppercase">
+        <div className="flex items-center gap-3 mb-12 justify-center">
+          <div className="w-16 h-[2px] bg-[#141213]" />
+          <span className="px-5 py-2 rounded-sm bg-[#141213] text-xs font-mono tracking-widest text-[#FFEBD3] flex items-center gap-2 font-black shadow-lg uppercase">
             <span className="w-2 h-2 rounded-full bg-[#FFB6A6] animate-pulse" />
             LIVE TELEMETRY // REAL-TIME SYNCHRONIZED
           </span>
-          <div className="section-divider w-16 bg-[#262223]" />
+          <div className="w-16 h-[2px] bg-[#141213]" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -105,11 +105,11 @@ export default function LiveStats() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="p-7 rounded-sm bg-[#181617] border border-[#262223] hover:border-[#FFB6A6] hover:bg-[#1C1A1B] transition-all duration-500 group relative overflow-hidden shadow-xl flex flex-col justify-between"
+            className="p-7 rounded-sm bg-[#141213] text-[#FFEBD3] border border-[#262223] hover:border-[#FFB6A6] transition-all duration-500 group relative overflow-hidden shadow-2xl flex flex-col justify-between"
           >
             <div className="flex items-center justify-between mb-6 border-b border-[#262223] pb-4">
-              <span className="text-[#FFEBD3]/70 font-mono text-xs font-black uppercase tracking-wider">Public Repositories</span>
-              <div className="p-3 rounded-sm bg-[#141213] border border-[#9BCEC1]/40 text-[#9BCEC1] group-hover:bg-[#FFB6A6] group-hover:text-[#141213] group-hover:border-[#FFB6A6] transition-all duration-300">
+              <span className="text-[#FFEBD3]/80 font-mono text-xs font-black uppercase tracking-wider">Public Repositories</span>
+              <div className="p-3 rounded-sm bg-[#181617] border border-[#9BCEC1]/40 text-[#9BCEC1] group-hover:bg-[#FFB6A6] group-hover:text-[#141213] group-hover:border-[#FFB6A6] transition-all duration-300">
                 <Github size={18} />
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function LiveStats() {
               <AnimatedCounter value={githubStats.repos} />
             </div>
             
-            <div className="flex items-center gap-4 text-xs text-[#FFEBD3]/80 pt-4 border-t border-[#262223] font-mono font-bold uppercase">
+            <div className="flex items-center gap-4 text-xs text-[#FFEBD3]/90 pt-4 border-t border-[#262223] font-mono font-bold uppercase">
               <span className="flex items-center gap-1.5 text-[#FFB6A6]">
                 <Star size={14} className="fill-[#FFB6A6]" />
                 <AnimatedCounter value={githubStats.stars} /> Stars
@@ -136,11 +136,11 @@ export default function LiveStats() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="p-7 rounded-sm bg-[#181617] border border-[#262223] hover:border-[#FFB6A6] hover:bg-[#1C1A1B] transition-all duration-500 group relative overflow-hidden shadow-xl flex flex-col justify-between"
+            className="p-7 rounded-sm bg-[#141213] text-[#FFEBD3] border border-[#262223] hover:border-[#FFB6A6] transition-all duration-500 group relative overflow-hidden shadow-2xl flex flex-col justify-between"
           >
             <div className="flex items-center justify-between mb-6 border-b border-[#262223] pb-4">
-              <span className="text-[#FFEBD3]/70 font-mono text-xs font-black uppercase tracking-wider">Tech Architecture</span>
-              <div className="p-3 rounded-sm bg-[#141213] border border-[#67A2C5]/40 text-[#67A2C5] group-hover:bg-[#FFB6A6] group-hover:text-[#141213] group-hover:border-[#FFB6A6] transition-all duration-300">
+              <span className="text-[#FFEBD3]/80 font-mono text-xs font-black uppercase tracking-wider">Tech Architecture</span>
+              <div className="p-3 rounded-sm bg-[#181617] border border-[#67A2C5]/40 text-[#67A2C5] group-hover:bg-[#FFB6A6] group-hover:text-[#141213] group-hover:border-[#FFB6A6] transition-all duration-300">
                 <Terminal size={18} />
               </div>
             </div>
@@ -149,14 +149,14 @@ export default function LiveStats() {
               {githubStats.topLanguages.slice(0, 4).map((lang, idx) => (
                 <span
                   key={idx}
-                  className="px-3 py-1.5 rounded-sm bg-[#141213] border border-[#262223] text-xs font-mono font-bold text-[#FFEBD3]/90 group-hover:border-[#9BCEC1]/60 group-hover:text-[#9BCEC1] transition-all uppercase tracking-wider"
+                  className="px-3 py-1.5 rounded-sm bg-[#181617] border border-[#262223] text-xs font-mono font-bold text-[#FFEBD3] group-hover:border-[#9BCEC1]/60 group-hover:text-[#9BCEC1] transition-all uppercase tracking-wider"
                 >
                   {lang}
                 </span>
               ))}
             </div>
 
-            <div className="pt-4 border-t border-[#262223] text-[11px] font-mono font-bold text-[#FFEBD3]/60 uppercase tracking-widest">
+            <div className="pt-4 border-t border-[#262223] text-[11px] font-mono font-bold text-[#9BCEC1] uppercase tracking-widest">
               CORE PRODUCTION STACK
             </div>
           </motion.div>
@@ -167,11 +167,11 @@ export default function LiveStats() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="p-7 rounded-sm bg-[#181617] border border-[#262223] hover:border-[#FFB6A6] hover:bg-[#1C1A1B] transition-all duration-500 group relative overflow-hidden shadow-xl flex flex-col justify-between"
+            className="p-7 rounded-sm bg-[#141213] text-[#FFEBD3] border border-[#262223] hover:border-[#FFB6A6] transition-all duration-500 group relative overflow-hidden shadow-2xl flex flex-col justify-between"
           >
             <div className="flex items-center justify-between mb-6 border-b border-[#262223] pb-4">
-              <span className="text-[#FFEBD3]/70 font-mono text-xs font-black uppercase tracking-wider">Algorithm Mastery</span>
-              <div className="p-3 rounded-sm bg-[#141213] border border-[#FFB6A6]/40 text-[#FFB6A6] group-hover:bg-[#FFB6A6] group-hover:text-[#141213] transition-all duration-300">
+              <span className="text-[#FFEBD3]/80 font-mono text-xs font-black uppercase tracking-wider">Algorithm Mastery</span>
+              <div className="p-3 rounded-sm bg-[#181617] border border-[#FFB6A6]/40 text-[#FFB6A6] group-hover:bg-[#FFB6A6] group-hover:text-[#141213] transition-all duration-300">
                 <Code2 size={18} />
               </div>
             </div>
@@ -182,13 +182,13 @@ export default function LiveStats() {
             </div>
             
             <div className="flex items-center justify-between gap-2 text-xs font-mono pt-4 border-t border-[#262223] font-black uppercase">
-              <span className="text-[#9BCEC1] bg-[#141213] px-2.5 py-1 rounded-sm border border-[#9BCEC1]/40">
+              <span className="text-[#9BCEC1] bg-[#181617] px-2.5 py-1 rounded-sm border border-[#9BCEC1]/40">
                 E: {leetcodeStats.easy}
               </span>
-              <span className="text-[#FFEBD3] bg-[#141213] px-2.5 py-1 rounded-sm border border-[#FFEBD3]/40">
+              <span className="text-[#FFEBD3] bg-[#181617] px-2.5 py-1 rounded-sm border border-[#FFEBD3]/40">
                 M: {leetcodeStats.medium}
               </span>
-              <span className="text-[#FFB6A6] bg-[#141213] px-2.5 py-1 rounded-sm border border-[#FFB6A6]/40">
+              <span className="text-[#FFB6A6] bg-[#181617] px-2.5 py-1 rounded-sm border border-[#FFB6A6]/40">
                 H: {leetcodeStats.hard}
               </span>
             </div>
@@ -200,11 +200,11 @@ export default function LiveStats() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.3 }}
-            className="p-7 rounded-sm bg-[#181617] border border-[#262223] hover:border-[#FFB6A6] hover:bg-[#1C1A1B] transition-all duration-500 group relative overflow-hidden shadow-xl flex flex-col justify-between"
+            className="p-7 rounded-sm bg-[#141213] text-[#FFEBD3] border border-[#262223] hover:border-[#FFB6A6] transition-all duration-500 group relative overflow-hidden shadow-2xl flex flex-col justify-between"
           >
             <div className="flex items-center justify-between mb-6 border-b border-[#262223] pb-4">
-              <span className="text-[#FFEBD3]/70 font-mono text-xs font-black uppercase tracking-wider">Global Standing</span>
-              <div className="p-3 rounded-sm bg-[#141213] border border-[#FFEBD3]/40 text-[#FFEBD3] group-hover:bg-[#FFB6A6] group-hover:text-[#141213] group-hover:border-[#FFB6A6] transition-all duration-300">
+              <span className="text-[#FFEBD3]/80 font-mono text-xs font-black uppercase tracking-wider">Global Standing</span>
+              <div className="p-3 rounded-sm bg-[#181617] border border-[#FFEBD3]/40 text-[#FFEBD3] group-hover:bg-[#FFB6A6] group-hover:text-[#141213] group-hover:border-[#FFB6A6] transition-all duration-300">
                 <Trophy size={18} />
               </div>
             </div>
@@ -213,7 +213,7 @@ export default function LiveStats() {
               {leetcodeStats.ranking}
             </div>
             
-            <div className="text-xs text-[#FFEBD3]/80 flex items-center justify-between pt-4 border-t border-[#262223] font-mono font-bold uppercase">
+            <div className="text-xs text-[#FFEBD3]/90 flex items-center justify-between pt-4 border-t border-[#262223] font-mono font-bold uppercase">
               <span className="flex items-center gap-1.5 text-[#9BCEC1]">
                 <span className="w-2 h-2 rounded-full bg-[#9BCEC1] animate-pulse" /> Live Telemetry
               </span>
