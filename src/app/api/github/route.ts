@@ -23,6 +23,10 @@ export async function GET() {
 
     clearTimeout(timeoutId);
 
+    if (!userRes && !reposRes) {
+      return new NextResponse('GitHub API unavailable', { status: 503 });
+    }
+
     let userData: any = {};
     if (userRes && userRes.ok) {
       userData = await userRes.json().catch(() => ({}));

@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -12,7 +10,7 @@
   body {
     background: #FAFAFA;
     color: #111827;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
     @apply antialiased overflow-x-hidden min-h-screen;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -47,4 +45,10 @@
   outline: 2px solid #2563EB;
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+/* Subtle grain texture (used by error / 404 pages) */
+.bg-grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 4px 4px;
 }

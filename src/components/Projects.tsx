@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Github, ExternalLink } from 'lucide-react';
 import { PROJECTS_DATA as projectsData } from '@/data/projects';
@@ -13,6 +13,8 @@ export default function Projects() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   const categories = ['All', ...Array.from(new Set(projectsData.map((p) => p.category)))];
+
+  const closeModal = useCallback(() => setActiveProject(null), []);
 
   const filteredProjects =
     selectedCategory === 'All'
@@ -128,24 +130,22 @@ export default function Projects() {
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <span
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
                           className="flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-gray-900 transition-colors"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            window.open(project.githubUrl, '_blank');
-                          }}
                         >
                           <Github size={14} />
                           View Source
-                        </span>
+                        </a>
                         <div className="w-8 h-8 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-400 group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-300">
                           <ArrowUpRight size={14} />
                         </div>
                       </div>
                     </div>
                   </div>
-                  {/* Semantic AEO link */}
-                  <a href="/" className="sr-only">Back to Chethan Kumar HR's Portfolio Home</a>
                 </motion.div>
               );
             })}
@@ -153,9 +153,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Project Details Modal */}
-        {activeProject && (
-          <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
-        )}
+        <ProjectModal project={activeProject} onClose={closeModal} />
       </div>
     </section>
   );

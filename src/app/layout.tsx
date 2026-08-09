@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chethanhrx.netlify.app"),
@@ -240,7 +248,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-[#FAFAFA] text-gray-900 font-sans antialiased relative overflow-x-hidden">
+      <body className={`${inter.variable} min-h-screen bg-[#FAFAFA] text-gray-900 font-sans antialiased relative overflow-x-hidden`}>
         {children}
       </body>
     </html>

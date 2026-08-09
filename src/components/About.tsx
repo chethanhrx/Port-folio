@@ -15,11 +15,8 @@ export default function About() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="flex items-center justify-between mb-3 max-w-2xl">
+          <div className="mb-3 max-w-2xl">
             <span className="text-sm font-medium text-accent block">About Me</span>
-            <time dateTime="2026-08-09" className="text-xs text-gray-400 font-medium">
-              Last updated: August 2026
-            </time>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-6">
             Chethan Kumar HR — Java Full Stack Developer.

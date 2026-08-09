@@ -1,20 +1,43 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, CheckCircle2, Github, Code2, Linkedin } from 'lucide-react';
+
+const CONTACT_EMAIL = 'chethankumarhr751@gmail.com';
 
 export default function Contact() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (resetTimer.current) clearTimeout(resetTimer.current);
+    };
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitting) return;
+
+    const { name, email, message } = formState;
+
+    const subject = encodeURIComponent(`Portfolio inquiry from ${name || 'a visitor'}`);
+    const body = encodeURIComponent(
+      `Hi Chethan,\n\n${message}\n\n---\nName: ${name}\nEmail: ${email}\n`
+    );
+
+    setSubmitting(true);
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+
     setSubmitted(true);
-    setTimeout(() => {
+    setSubmitting(false);
+    resetTimer.current = setTimeout(() => {
       setSubmitted(false);
       setFormState({ name: '', email: '', message: '' });
-    }, 4000);
+    }, 5000);
   };
 
   return (
@@ -138,9 +161,11 @@ export default function Contact() {
                   className="py-12 text-center space-y-4"
                 >
                   <CheckCircle2 size={48} className="text-green-500 mx-auto" />
-                  <h4 className="text-xl font-semibold text-gray-900">Message Sent!</h4>
+                  <h4 className="text-xl font-semibold text-gray-900">Opening your email app…</h4>
                   <p className="text-sm text-gray-500 max-w-sm mx-auto leading-relaxed">
-                    Thanks for reaching out{formState.name ? `, ${formState.name}` : ''}. I&apos;ll get back to you within 24 hours.
+                    Thanks for reaching out{formState.name ? `, ${formState.name}` : ''}. Your email
+                    client should open with a pre-filled message — just press send and I&apos;ll get
+                    back to you within 24 hours.
                   </p>
                 </motion.div>
               ) : (
@@ -151,7 +176,9 @@ export default function Contact() {
                     </label>
                     <input
                       type="text"
+                      name="name"
                       required
+                      autoComplete="name"
                       placeholder="John Doe"
                       value={formState.name}
                       onChange={(e) => setFormState({ ...formState, name: e.target.value })}
@@ -165,7 +192,9 @@ export default function Contact() {
                     </label>
                     <input
                       type="email"
+                      name="email"
                       required
+                      autoComplete="email"
                       placeholder="john@company.com"
                       value={formState.email}
                       onChange={(e) => setFormState({ ...formState, email: e.target.value })}
@@ -179,6 +208,7 @@ export default function Contact() {
                     </label>
                     <textarea
                       rows={5}
+                      name="message"
                       required
                       placeholder="Tell me about the role or project you have in mind..."
                       value={formState.message}
@@ -189,7 +219,8 @@ export default function Contact() {
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium transition-all flex items-center justify-center gap-2 cursor-pointer"
+                    disabled={submitting}
+                    className="w-full py-3.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     Send Message
                     <Send size={15} />

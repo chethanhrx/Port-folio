@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { ArrowDown, Github, Mail, Linkedin } from 'lucide-react';
 import LeetCodeStats from './LeetCodeStats';
+import GithubStat from './GithubStat';
 
 export default function Hero() {
   const handleScrollTo = (id: string) => {
@@ -110,14 +111,11 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="mt-20 pt-8 border-t border-gray-200 flex flex-wrap gap-12"
+            className="mt-10 sm:mt-20 pt-8 border-t border-gray-200 flex flex-wrap gap-x-12 gap-y-8"
           >
+            <GithubStat />
             <div>
-              <span className="block text-2xl font-bold text-gray-900">30+</span>
-              <span className="text-sm text-gray-500">Projects Built</span>
-            </div>
-            <div>
-              <span className="block text-2xl font-bold text-gray-900">Fresher</span>
+              <span className="block text-2xl font-bold text-gray-900">3+</span>
               <span className="text-sm text-gray-500">Years Experience</span>
             </div>
             <div>

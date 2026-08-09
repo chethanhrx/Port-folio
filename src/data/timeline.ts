@@ -19,7 +19,7 @@ export const TIMELINE_DATA: TimelineItem[] = [
     year: '2023 – 2026',
     title: 'Bachelor of Computer Applications (BCA)',
     company: 'Tunga Mahavidyalaya',
-    description: 'Pursuing my undergraduate degree focusing on data structures, object-oriented programming, relational databases, and core software engineering principles.',
+    description: 'Completed my undergraduate degree with a focus on data structures, object-oriented programming, relational databases, and core software engineering principles.',
     type: 'education'
   },
   {

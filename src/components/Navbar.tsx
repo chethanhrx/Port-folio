@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
@@ -8,14 +8,37 @@ import { Menu, X, ArrowUpRight } from 'lucide-react';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const scrollTicking = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      if (scrollTicking.current) return;
+      scrollTicking.current = true;
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 20);
+        scrollTicking.current = false;
+      });
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false);
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [mobileMenuOpen]);
 
   const navLinks = [
     { name: 'About', href: '#about' },
@@ -25,16 +48,17 @@ export default function Navbar() {
   ];
 
   return (
-    <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/80 backdrop-blur-xl border-b border-gray-200/80 py-3'
-          : 'bg-transparent py-5'
-      }`}
-    >
+    <>
+      <motion.header
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? 'bg-white/80 backdrop-blur-xl border-b border-gray-200/80 py-3'
+            : 'bg-transparent py-5'
+        }`}
+      >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-3 group">
@@ -78,6 +102,8 @@ export default function Navbar() {
         {/* Mobile menu button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileMenuOpen}
           className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-all cursor-pointer"
         >
           {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -86,32 +112,42 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 p-5 flex flex-col gap-1 shadow-lg"
-        >
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-medium text-gray-700 hover:text-accent py-3 px-3 rounded-lg hover:bg-gray-50 transition-all flex items-center justify-between"
-            >
-              <span>{link.name}</span>
-              <ArrowUpRight size={14} className="text-gray-400" />
-            </a>
-          ))}
-          <a
-            href="#contact"
-            onClick={() => setMobileMenuOpen(false)}
-            className="mt-3 w-full py-3 rounded-lg bg-gray-900 text-white text-sm font-medium text-center flex items-center justify-center gap-2"
+        <>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 p-5 flex flex-col gap-1 shadow-lg z-50"
           >
-            <span>Get In Touch</span>
-            <ArrowUpRight size={14} />
-          </a>
-        </motion.div>
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-sm font-medium text-gray-700 hover:text-accent py-3 px-3 rounded-lg hover:bg-gray-50 transition-all flex items-center justify-between"
+              >
+                <span>{link.name}</span>
+                <ArrowUpRight size={14} className="text-gray-400" />
+              </a>
+            ))}
+            <a
+              href="#contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="mt-3 w-full py-3 rounded-lg bg-gray-900 text-white text-sm font-medium text-center flex items-center justify-center gap-2"
+            >
+              <span>Get In Touch</span>
+              <ArrowUpRight size={14} />
+            </a>
+          </motion.div>
+        </>
       )}
-    </motion.header>
+      </motion.header>
+      {mobileMenuOpen && (
+        <div
+          className="md:hidden fixed inset-0 z-40 bg-gray-900/40 backdrop-blur-sm"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+    </>
   );
 }

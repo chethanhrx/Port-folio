@@ -1,26 +1,9 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export const revalidate = 1800;
 
-export async function GET() {
-  const fallbackData = {
-    solved: 340,
-    easy: 120,
-    medium: 180,
-    hard: 40,
-    ranking: '#14,200',
-    totalSubmissions: 340,
-    easySubmissions: 120,
-    mediumSubmissions: 180,
-    hardSubmissions: 40,
-    acceptanceRate: 82,
-    streak: 15,
-    contestRating: 1650,
-    contestGlobalRanking: 14200,
-    contestTopPercentage: 8,
-    totalProblems: 340,
-    recentActivity: []
-  };
+export async function GET(request: NextRequest) {
+  const username = request.nextUrl.searchParams.get('username') || 'chethank_hr';
 
   try {
     const controller = new AbortController();
@@ -46,7 +29,7 @@ export async function GET() {
           }
         }
       `,
-      variables: { username: 'chethank_hr' }
+      variables: { username }
     };
 
     const res = await fetch('https://leetcode.com/graphql', {
@@ -72,12 +55,12 @@ export async function GET() {
         const medObj = stats.find((s: any) => s.difficulty === 'Medium');
         const hardObj = stats.find((s: any) => s.difficulty === 'Hard');
 
-        const solved = solvedObj?.count || fallbackData.solved;
-        const easy = easyObj?.count || fallbackData.easy;
-        const medium = medObj?.count || fallbackData.medium;
-        const hard = hardObj?.count || fallbackData.hard;
+        const solved = solvedObj?.count ?? 0;
+        const easy = easyObj?.count ?? 0;
+        const medium = medObj?.count ?? 0;
+        const hard = hardObj?.count ?? 0;
         const rawRank = matchedUser.profile?.ranking;
-        const ranking = rawRank ? `#${rawRank.toLocaleString()}` : fallbackData.ranking;
+        const ranking = rawRank ? `#${rawRank.toLocaleString()}` : null;
 
         return NextResponse.json({
           solved,
@@ -88,49 +71,13 @@ export async function GET() {
           totalSubmissions: solved,
           easySubmissions: easy,
           mediumSubmissions: medium,
-          hardSubmissions: hard,
-          acceptanceRate: solved > 0 ? 82 : fallbackData.acceptanceRate,
-          streak: fallbackData.streak,
-          contestRating: fallbackData.contestRating,
-          contestGlobalRanking: fallbackData.contestGlobalRanking,
-          contestTopPercentage: fallbackData.contestTopPercentage,
-          totalProblems: solved,
-          recentActivity: []
+          hardSubmissions: hard
         });
       }
     }
 
-    const alfaController = new AbortController();
-    const alfaTimeoutId = setTimeout(() => alfaController.abort(), 3000);
-    const alfaRes = await fetch('https://alfa-leetcode-api.onrender.com/chethank_hr', { signal: alfaController.signal, next: { revalidate: 1800 } }).catch(() => null);
-    clearTimeout(alfaTimeoutId);
-
-    if (alfaRes && alfaRes.ok) {
-      const alfaData = await alfaRes.json().catch(() => null);
-      if (alfaData && alfaData.totalSolved !== undefined) {
-        return NextResponse.json({
-          solved: alfaData.totalSolved || fallbackData.solved,
-          easy: alfaData.easySolved || fallbackData.easy,
-          medium: alfaData.mediumSolved || fallbackData.medium,
-          hard: alfaData.hardSolved || fallbackData.hard,
-          ranking: alfaData.ranking ? `#${alfaData.ranking.toLocaleString()}` : fallbackData.ranking,
-          totalSubmissions: alfaData.totalSolved || fallbackData.totalSubmissions,
-          easySubmissions: alfaData.easySolved || fallbackData.easySubmissions,
-          mediumSubmissions: alfaData.mediumSolved || fallbackData.mediumSubmissions,
-          hardSubmissions: alfaData.hardSolved || fallbackData.hardSubmissions,
-          acceptanceRate: 80,
-          streak: fallbackData.streak,
-          contestRating: fallbackData.contestRating,
-          contestGlobalRanking: fallbackData.contestGlobalRanking,
-          contestTopPercentage: fallbackData.contestTopPercentage,
-          totalProblems: alfaData.totalSolved || fallbackData.totalProblems,
-          recentActivity: []
-        });
-      }
-    }
-
-    return NextResponse.json(fallbackData);
-  } catch (error) {
-    return NextResponse.json(fallbackData);
+    return new NextResponse('LeetCode API unavailable', { status: 503 });
+  } catch {
+    return new NextResponse('LeetCode API unavailable', { status: 503 });
   }
 }
