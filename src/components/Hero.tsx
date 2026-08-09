@@ -140,7 +140,7 @@ export default function Hero() {
           <div className="relative">
             <div className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-gray-100 shadow-xl">
               <Image
-                src="/logo.png"
+                src="/chethanimage.jpg"
                 alt="Chethan Kumar H R"
                 width={320}
                 height={320}
