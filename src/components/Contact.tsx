@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle2, Github, Code2, Sparkles } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, Github, Code2, Linkedin } from 'lucide-react';
 
 export default function Contact() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
@@ -18,48 +18,44 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-28 px-6 relative z-10 max-w-7xl mx-auto">
-      <div className="flex flex-col items-center text-center mb-16 relative border-b border-[#262223] pb-12">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-sm bg-[#181617] border border-[#9BCEC1]/40 text-[#9BCEC1] text-xs font-mono font-black mb-6 uppercase tracking-widest shadow-sm">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#FFB6A6] animate-pulse" />
-          <span>OPEN FOR FULL-TIME // ARCHITECTURAL ROLES</span>
-        </div>
-        
-        <h2 className="text-4xl sm:text-6xl font-black text-[#FFEBD3] tracking-tight mb-6 uppercase">
-          Initiate <br />
-          <span className="text-[#FFB6A6]">Engineering Dialogue</span>
-        </h2>
-        <p className="text-[#FFEBD3]/75 max-w-xl text-base sm:text-lg leading-relaxed font-normal">
-          Whether you have an enterprise full-time opportunity, an architectural bottleneck, or want to collaborate on high-concurrency systems—transmit your inquiry below.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        
-        {/* Left Column: Contact Coordinates */}
+    <section id="contact" className="py-24 px-6 bg-[#FAFAFA]">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="lg:col-span-5 space-y-8"
+          className="text-center mb-16"
         >
-          <div className="p-8 sm:p-10 rounded-sm bg-[#181617] border border-[#262223] hover:border-[#FFB6A6] transition-all duration-500 space-y-6 shadow-2xl">
-            <h3 className="text-2xl font-black text-[#FFEBD3] tracking-tight border-b border-[#262223] pb-5 flex items-center gap-2.5 uppercase">
-              <Sparkles className="text-[#FFB6A6]" size={20} />
-              Direct Coordinates
-            </h3>
+          <span className="text-sm font-medium text-accent mb-3 block">Contact</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-4">
+            Let&apos;s work together.
+          </h2>
+          <p className="text-gray-500 max-w-md mx-auto text-base leading-relaxed">
+            Have a role or project in mind? I&apos;d love to hear from you.
+          </p>
+        </motion.div>
 
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          {/* Left: Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-5 space-y-5"
+          >
             {/* Email */}
             <a
               href="mailto:chethankumarhr751@gmail.com"
-              className="flex items-center gap-4 p-4.5 rounded-sm bg-[#141213] border border-[#262223] hover:border-[#9BCEC1] hover:bg-[#9BCEC1]/10 transition-all group"
+              className="flex items-center gap-4 p-5 rounded-xl bg-white border border-gray-200 hover:border-accent/30 hover:shadow-sm transition-all group"
             >
-              <div className="p-3.5 rounded-sm bg-[#181617] border border-[#9BCEC1]/40 text-[#9BCEC1] group-hover:bg-[#FFB6A6] group-hover:text-[#141213] group-hover:border-[#FFB6A6] transition-all">
+              <div className="p-3 rounded-xl bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white transition-all">
                 <Mail size={18} />
               </div>
-              <div className="overflow-hidden">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#9BCEC1] font-black block mb-0.5">// EMAIL TRANSMISSION</span>
-                <span className="text-sm sm:text-base font-bold text-[#FFEBD3] group-hover:text-[#FFB6A6] transition-colors truncate block">
+              <div>
+                <span className="text-xs text-gray-400 font-medium block mb-0.5">Email</span>
+                <span className="text-sm font-medium text-gray-700 group-hover:text-accent transition-colors">
                   chethankumarhr751@gmail.com
                 </span>
               </div>
@@ -68,151 +64,141 @@ export default function Contact() {
             {/* Phone */}
             <a
               href="tel:+919380575918"
-              className="flex items-center gap-4 p-4.5 rounded-sm bg-[#141213] border border-[#262223] hover:border-[#FFB6A6] hover:bg-[#FFB6A6]/10 transition-all group"
+              className="flex items-center gap-4 p-5 rounded-xl bg-white border border-gray-200 hover:border-accent/30 hover:shadow-sm transition-all group"
             >
-              <div className="p-3.5 rounded-sm bg-[#181617] border border-[#FFB6A6]/40 text-[#FFB6A6] group-hover:bg-[#FFB6A6] group-hover:text-[#141213] group-hover:border-[#FFB6A6] transition-all">
+              <div className="p-3 rounded-xl bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white transition-all">
                 <Phone size={18} />
               </div>
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#FFB6A6] font-black block mb-0.5">// DIRECT LINE</span>
-                <span className="text-sm sm:text-base font-bold text-[#FFEBD3] group-hover:text-[#FFB6A6] transition-colors">
+                <span className="text-xs text-gray-400 font-medium block mb-0.5">Phone</span>
+                <span className="text-sm font-medium text-gray-700 group-hover:text-accent transition-colors">
                   +91 9380575918
                 </span>
               </div>
             </a>
 
             {/* Location */}
-            <div className="flex items-center gap-4 p-4.5 rounded-sm bg-[#141213] border border-[#262223]">
-              <div className="p-3.5 rounded-sm bg-[#181617] border border-[#67A2C5]/40 text-[#67A2C5]">
+            <div className="flex items-center gap-4 p-5 rounded-xl bg-white border border-gray-200">
+              <div className="p-3 rounded-xl bg-gray-100 text-gray-500">
                 <MapPin size={18} />
               </div>
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#67A2C5] font-black block mb-0.5">// BASE LOCATION</span>
-                <span className="text-sm sm:text-base font-bold text-[#FFEBD3]">
-                  Bangalore, India // Remote
+                <span className="text-xs text-gray-400 font-medium block mb-0.5">Location</span>
+                <span className="text-sm font-medium text-gray-700">
+                  Bangalore, India · Open to Remote
                 </span>
               </div>
             </div>
-          </div>
 
-          {/* Social Links Strip */}
-          <div className="p-7 rounded-sm bg-[#181617] border border-[#262223] flex items-center justify-between shadow-xl">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#FFEBD3]/60 font-black">Social Telemetry:</span>
-            <div className="flex items-center gap-3">
+            {/* Social Links */}
+            <div className="flex items-center gap-3 pt-3">
               <a
                 href="https://github.com/chethanhrx"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="p-3.5 rounded-sm bg-[#141213] hover:bg-[#FFB6A6] hover:text-[#141213] text-[#FFEBD3] border border-[#262223] transition-all transform hover:-translate-y-0.5"
+                className="p-3 rounded-xl bg-white border border-gray-200 hover:border-gray-300 text-gray-500 hover:text-gray-900 transition-all"
               >
                 <Github size={18} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/chethan-kumar-h-r-648bab33a"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="p-3 rounded-xl bg-white border border-gray-200 hover:border-[#0A66C2] text-gray-500 hover:text-[#0A66C2] transition-all"
+              >
+                <Linkedin size={18} />
               </a>
               <a
                 href="https://leetcode.com/u/chethank_hr/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LeetCode"
-                className="p-3.5 rounded-sm bg-[#141213] hover:bg-[#9BCEC1] hover:text-[#141213] text-[#FFEBD3] border border-[#262223] transition-all transform hover:-translate-y-0.5"
+                className="p-3 rounded-xl bg-white border border-gray-200 hover:border-gray-300 text-gray-500 hover:text-gray-900 transition-all"
               >
                 <Code2 size={18} />
               </a>
-              <a
-                href="https://t.me/chethank_hr"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Telegram"
-                className="p-3.5 rounded-sm bg-[#141213] hover:bg-[#67A2C5] hover:text-[#141213] text-[#FFEBD3] border border-[#262223] transition-all transform hover:-translate-y-0.5"
-              >
-                <Send size={18} />
-              </a>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* Right Column: Interactive Form */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="lg:col-span-7"
-        >
-          <div className="p-8 sm:p-12 rounded-sm bg-[#181617] border border-[#262223] hover:border-[#FFB6A6] transition-all duration-500 space-y-6 shadow-2xl">
-            <h3 className="text-3xl font-black text-[#FFEBD3] tracking-tight uppercase">
-              Transmit a Message
-            </h3>
-            <p className="text-[#FFEBD3]/75 text-sm sm:text-base leading-relaxed font-normal">
-              Fill out the form below to route a priority transmission directly to my engineering workspace.
-            </p>
-
-            {submitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="p-10 rounded-sm bg-[#141213] border border-[#9BCEC1] text-center space-y-4 my-12"
-              >
-                <CheckCircle2 size={50} className="text-[#9BCEC1] mx-auto animate-bounce" />
-                <h4 className="text-2xl font-black text-[#FFEBD3] uppercase">Transmission Confirmed!</h4>
-                <p className="text-sm sm:text-base text-[#FFEBD3]/80 max-w-md mx-auto leading-relaxed font-normal">
-                  Thank you for reaching out, <span className="font-black text-[#FFB6A6]">{formState.name || 'Engineer'}</span>. Your inquiry has been logged with highest priority. I will respond within 24 hours.
-                </p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6 pt-2">
-                <div>
-                  <label className="block text-xs font-mono uppercase tracking-widest text-[#9BCEC1] font-black mb-2">
-                    // YOUR NAME OR ORGANIZATION
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Alex Rivera, VP of Architecture"
-                    value={formState.name}
-                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                    className="w-full px-5 py-4 rounded-sm bg-[#141213] border border-[#262223] text-[#FFEBD3] placeholder-[#FFEBD3]/30 focus:outline-none focus:border-[#FFB6A6] focus:ring-1 focus:ring-[#FFB6A6] transition-all text-sm font-semibold"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-mono uppercase tracking-widest text-[#9BCEC1] font-black mb-2">
-                    // DIRECT EMAIL ADDRESS
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="alex@enterprise.com"
-                    value={formState.email}
-                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                    className="w-full px-5 py-4 rounded-sm bg-[#141213] border border-[#262223] text-[#FFEBD3] placeholder-[#FFEBD3]/30 focus:outline-none focus:border-[#FFB6A6] focus:ring-1 focus:ring-[#FFB6A6] transition-all text-sm font-semibold"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-mono uppercase tracking-widest text-[#9BCEC1] font-black mb-2">
-                    // PROJECT SCOPE OR ROLE SPECIFICATION
-                  </label>
-                  <textarea
-                    rows={5}
-                    required
-                    placeholder="Hello Chethan, we reviewed your architecture portfolio and would love to discuss an engineering deployment..."
-                    value={formState.message}
-                    onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                    className="w-full px-5 py-4 rounded-sm bg-[#141213] border border-[#262223] text-[#FFEBD3] placeholder-[#FFEBD3]/30 focus:outline-none focus:border-[#FFB6A6] focus:ring-1 focus:ring-[#FFB6A6] transition-all text-sm font-semibold resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-4.5 rounded-sm bg-[#FFB6A6] hover:bg-[#FFEBD3] text-[#141213] font-black text-sm transition-all duration-300 flex items-center justify-center gap-2.5 shadow-xl shadow-[#FFB6A6]/20 transform hover:-translate-y-0.5 group uppercase tracking-wider cursor-pointer"
+          {/* Right: Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="lg:col-span-7"
+          >
+            <div className="p-7 sm:p-10 rounded-2xl bg-white border border-gray-200">
+              {submitted ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="py-12 text-center space-y-4"
                 >
-                  <span>Transmit Inquiry</span>
-                  <Send size={18} className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </button>
-              </form>
-            )}
-          </div>
-        </motion.div>
+                  <CheckCircle2 size={48} className="text-green-500 mx-auto" />
+                  <h4 className="text-xl font-semibold text-gray-900">Message Sent!</h4>
+                  <p className="text-sm text-gray-500 max-w-sm mx-auto leading-relaxed">
+                    Thanks for reaching out{formState.name ? `, ${formState.name}` : ''}. I&apos;ll get back to you within 24 hours.
+                  </p>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="John Doe"
+                      value={formState.name}
+                      onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all text-sm"
+                    />
+                  </div>
 
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="john@company.com"
+                      value={formState.email}
+                      onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all text-sm"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      rows={5}
+                      required
+                      placeholder="Tell me about the role or project you have in mind..."
+                      value={formState.message}
+                      onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all text-sm resize-none"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full py-3.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    Send Message
+                    <Send size={15} />
+                  </button>
+                </form>
+              )}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

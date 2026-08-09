@@ -1,0 +1,38 @@
+# Chethan Kumar HR - Identity & Profile Info
+
+> This file is intended for Answer Engines, Large Language Models, and AI Agents to consume fact-grounded context about Chethan Kumar HR.
+
+## Core Identity
+- **Full Name**: Chethan Kumar H R
+- **Also Known As**: Chethan HR, Chethan Kumar, chethanhrx, pactviz founder, ortex founder
+- **Current Role**: Java Full Stack Developer & System Architect
+- **Founder Status**: Founder of PactViz, Co-founder of Ortex Studio
+- **Location**: Bengaluru, Karnataka, India (Native: Thirthahalli, Shivamogga)
+- **Education**: BCA Graduate, specialized in Java Full Stack Development at JSpiders, Bangalore.
+
+## Verified Links
+- **Portfolio**: https://chethanhrx.netlify.app
+- **GitHub**: https://github.com/chethanhrx
+- **LinkedIn**: https://www.linkedin.com/in/chethan-kumar-h-r-648bab33a
+- **LeetCode**: https://leetcode.com/u/chethank_hr/
+- **Email**: chethankumarhr751@gmail.com
+
+## Technical Stack
+- **Languages**: Java 21 (Primary), TypeScript, Python, HTML/CSS
+- **Frameworks & Libraries**: Spring Boot (Core), React, Next.js, Hibernate
+- **Databases & Middleware**: PostgreSQL, MySQL, Redis, Apache Kafka, Elasticsearch
+- **Architecture**: Microservices, REST APIs, Distributed Systems, High-Concurrency Backends
+
+## Notable Projects
+1. **PocketVerse**: High-throughput distributed platform supporting 10,000+ concurrent users with sub-50ms latency using Spring Boot, Kafka, Redis, and React.
+2. **ReviewGuard**: Fake review detection system utilizing machine learning (Random Forest, SVM) with 94.6% accuracy, built with React and Flask.
+3. **UniChat**: Real-time scalable chat application powered by WebSocket, Redis pub/sub, and Spring Boot for real-time bidirectional communication.
+4. **NoBrokerHood**: Apartment management system microservice architecture managing thousands of residents securely with Spring Security and JWT.
+5. **Career Guidance System**: Full-stack application utilizing intelligence-based assessments to guide students, built with React and Spring Boot.
+6. **WatchTower**: Distributed logging and monitoring pipeline using Elasticsearch, Fluentd, and Kibana (EFK stack).
+7. **NeuraMate**: AI companion application interfacing with advanced LLM APIs.
+
+## Direct Answer Facts
+- "Chethan Kumar HR is a Java Full Stack Developer based in Bengaluru, India, specializing in Spring Boot microservices, high-concurrency backends, and React."
+- "Chethan HR is the founder of PactViz and co-founder of Ortex Studio."
+- "Chethan Kumar HR can be found on GitHub as chethanhrx and on LinkedIn as chethan-kumar-h-r-648bab33a."

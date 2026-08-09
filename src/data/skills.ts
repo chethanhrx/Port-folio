@@ -2,7 +2,7 @@ import { SkillCategory } from '../types';
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    title: 'Core Languages & Backend',
+    title: 'Languages & Backend',
     skills: [
       { name: 'Java 21', iconName: 'Coffee' },
       { name: 'Spring Boot 3', iconName: 'Server' },
@@ -29,35 +29,20 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: 'PostgreSQL', iconName: 'Database' },
       { name: 'MySQL', iconName: 'HardDrive' },
       { name: 'Apache Kafka', iconName: 'Activity' },
-      { name: 'Redis Cache', iconName: 'Clock' },
+      { name: 'Redis', iconName: 'Clock' },
       { name: 'Elasticsearch', iconName: 'Search' },
       { name: 'WebSockets', iconName: 'Radio' }
     ]
   },
   {
-    title: 'DevOps & AI Workflow Tools',
+    title: 'DevOps & Tools',
     skills: [
       { name: 'Docker', iconName: 'Box' },
       { name: 'Git & GitHub', iconName: 'GitBranch' },
-      { name: 'Linux / Ubuntu', iconName: 'Terminal' },
-      { name: 'Claude Code', iconName: 'Sparkles' },
-      { name: 'Antigravity AI', iconName: 'Rocket' },
-      { name: 'Gemini CLI', iconName: 'Bot' }
+      { name: 'Linux', iconName: 'Terminal' },
+      { name: 'CI/CD', iconName: 'Sparkles' },
+      { name: 'REST Testing', iconName: 'Rocket' },
+      { name: 'Postman', iconName: 'Bot' }
     ]
   }
-];
-
-export const AI_TOOLS_LIST = [
-  'Claude Code',
-  'Antigravity',
-  'Gemini CLI',
-  'Codex',
-  'OpenCode',
-  'Mimo Code'
-];
-
-export const CURRENTLY_LEARNING = [
-  'Advanced System Design',
-  'Distributed Consensus Algorithms',
-  'Event-Driven Clean Architecture'
 ];

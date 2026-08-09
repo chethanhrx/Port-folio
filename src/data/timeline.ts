@@ -2,31 +2,31 @@ import { TimelineItem } from '../types';
 
 export const TIMELINE_DATA: TimelineItem[] = [
   {
-    year: '2024 – Present',
-    title: 'Java Full Stack Development Specialization',
+    year: '2026 – Present',
+    title: 'Java Full Stack Development Program',
     company: 'JSpiders, Bangalore',
-    description: 'Intensive architecture-first engineering program covering Spring Boot microservices, REST APIs, Kafka messaging pipelines, React frontend integration, and PostgreSQL database performance tuning.',
+    description: 'Currently pursuing an intensive engineering program focusing on Java, Spring Boot microservices, React, and building scalable full-stack applications.',
+    type: 'education'
+  },
+  {
+    year: '2026',
+    title: 'PHP Backend Developer & SEO (Final Year Internship)',
+    company: 'DCSSSN Thirthahalli',
+    description: 'Developed and deployed a real-world web application (dcsssnthirthahalli.com). Handled PHP backend architecture, database management, SEO optimization, and live server deployment.',
+    type: 'experience'
+  },
+  {
+    year: '2023 – 2026',
+    title: 'Bachelor of Computer Applications (BCA)',
+    company: 'Tunga Mahavidyalaya',
+    description: 'Pursuing my undergraduate degree focusing on data structures, object-oriented programming, relational databases, and core software engineering principles.',
     type: 'education'
   },
   {
     year: '2022 – Present',
-    title: 'Freelance Full-Stack Web Developer',
-    company: 'Self-Employed / Global Clients',
-    description: 'Architecting and deploying custom responsive web applications, secure RESTful backends, and AI-integrated tools for international clients. Focus on clean code maintainability and SEO optimization.',
+    title: 'Freelance Web Developer',
+    company: 'Self-Employed',
+    description: 'Building custom web applications, APIs, and tools for clients. Focus on clean code, responsive design, and practical backend solutions.',
     type: 'experience'
-  },
-  {
-    year: '2023',
-    title: 'Testing & Deployment Specialist Internship',
-    company: 'DSSSN Internship',
-    description: 'Spearheaded automated testing protocols, CI/CD pipeline verification, containerized Docker deployments, and rigorous QA verification across enterprise software releases.',
-    type: 'experience'
-  },
-  {
-    year: 'Graduated 2023',
-    title: 'Bachelor of Computer Applications (BCA)',
-    company: 'Tunga Mahavidyalaya',
-    description: 'Completed comprehensive undergraduate degree focusing on data structures, algorithms, object-oriented Java programming, relational database management systems, and web technologies.',
-    type: 'education'
   }
 ];

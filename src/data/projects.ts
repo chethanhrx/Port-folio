@@ -2,147 +2,195 @@ import { Project } from '../types';
 
 export const PROJECTS_DATA: Project[] = [
   {
-    id: 'mergebase',
-    title: 'MergeBase',
-    category: 'Backend / Microservices',
-    shortDescription: 'Git for your database — branch, diff, merge, and rollback schema & data snapshots.',
-    overview: 'MergeBase is an innovative database versioning tool designed to bring Git-like copy-on-write semantics to relational databases. It enables developers to branch production states safely, test schema migrations in isolation, and rollback instant page snapshots without downtime.',
-    architecture: 'Built in Java using a Copy-on-Write page engine. It splits database states into 4KB pages where only modified pages are written to new snapshots while sharing unchanged pages across branches. All merges execute inside strict ACID transactional wrappers.',
+    id: 'careerguidencesystem',
+    title: 'Career Guidance System',
+    category: 'Full Stack Apps',
+    shortDescription: 'Intelligence-based career guidance application helping users make informed career decisions.',
+    overview: 'An intelligent career guidance system that helps users discover suitable career paths based on their interests, skills, and aptitude through data-driven recommendations.',
+    architecture: 'PHP backend with MySQL database, implementing recommendation algorithms based on user profile analysis and career data.',
     features: [
-      'Git-like CLI commands (init, snapshot, branch, checkout, diff, merge, rollback).',
-      'Copy-on-Write page engine allowing instant multi-gigabyte branching with ~200KB snapshot footprints.',
-      'Detailed tabular diffs showing exact table schema alterations and modified row counts.',
-      'Transactional all-or-nothing merge execution ensuring zero production corruption.'
+      'Aptitude and interest assessment modules.',
+      'Data-driven career path recommendations.',
+      'Career comparison and exploration tools.',
+      'User profile management with progress tracking.'
     ],
     challenges: [
-      'Implementing efficient page-level deduplication across disparate snapshot lineages.',
-      'Maintaining ACID compliance and foreign-key integrity during complex multi-table branch merges.'
+      'Building an effective recommendation algorithm with limited training data.',
+      'Designing comprehensive career assessments that are both accurate and user-friendly.'
     ],
-    techStack: ['Java', 'MySQL', 'SQLite', 'Copy-on-Write Engine', 'CLI Architecture'],
-    githubUrl: 'https://github.com/chethanhrx/mergebase',
+    techStack: ['PHP', 'MySQL', 'HTML/CSS', 'Recommendation System'],
+    githubUrl: 'https://github.com/chethanhrx/careerGuidenceSystem',
+    year: '2023',
+    role: 'Creator & Developer',
+    previewColor: '',
+    stats: { stars: 4, forks: 1, language: 'PHP' }
+  },
+  {
+    id: 'fake-review-detection',
+    title: 'ReviewGuard',
+    category: 'AI / ML Integrated',
+    shortDescription: 'Full-stack Django app that detects fake product reviews using machine learning.',
+    overview: 'ReviewGuard is a full-stack Django web application that detects whether a product review is genuine or fake using natural language processing and machine learning classification.',
+    architecture: 'Django backend with trained ML model for text classification. Processes review text through NLP pipeline to extract features and classify authenticity.',
+    features: [
+      'ML-powered fake review detection.',
+      'Web interface for submitting and analyzing reviews.',
+      'Batch processing of review datasets.',
+      'Detailed analysis reports with confidence scores.'
+    ],
+    challenges: [
+      'Achieving high accuracy with limited labeled training data.',
+      'Handling diverse writing styles and review formats across different platforms.'
+    ],
+    techStack: ['Python', 'Django', 'Machine Learning', 'NLP'],
+    githubUrl: 'https://github.com/chethanhrx/Fake-Review-Detection-System',
     year: '2024',
-    role: 'Lead Architect & Creator',
-    previewColor: 'from-slate-900 via-indigo-950 to-slate-900',
-    stats: { stars: 0, forks: 0, language: 'Java' }
+    role: 'Creator & Developer',
+    previewColor: '',
+    stats: { stars: 3, forks: 0, language: 'Python' }
+  },
+  {
+    id: 'traffic-monitoring',
+    title: 'Intelligent Traffic Monitor',
+    category: 'AI / ML Integrated',
+    shortDescription: 'Object Detection for Traffic Monitoring using Computer Vision & Deep Learning (MCA Research Project).',
+    overview: 'An intelligent traffic monitoring system that detects, classifies, and analyzes vehicles in real-time using state-of-the-art object detection. Developed as an MCA Research Project.',
+    architecture: 'Python-based computer vision application utilizing deep learning models for real-time video stream processing and object recognition.',
+    features: [
+      'Real-time vehicle detection and classification.',
+      'Traffic flow analysis and counting.',
+      'Integration with video streams for continuous monitoring.',
+      'Data logging for historical analysis.'
+    ],
+    challenges: [
+      'Optimizing deep learning models for real-time inference speed without losing accuracy.',
+      'Handling variable lighting conditions and occlusions in video feeds.'
+    ],
+    techStack: ['Python', 'Computer Vision', 'Deep Learning', 'OpenCV'],
+    githubUrl: 'https://github.com/chethanhrx/Object-Detection-for-Traffic-Monitoring-',
+    year: '2024',
+    role: 'Researcher & Developer',
+    previewColor: '',
+    stats: { stars: 3, forks: 0, language: 'Python' }
+  },
+  {
+    id: 'cricketpro',
+    title: 'CricketPro',
+    category: 'Full Stack Apps',
+    shortDescription: 'The Ultimate IPL-Style Real-Time Live Auction Platform for local cricket tournaments.',
+    overview: 'CricketPro is a comprehensive real-time live auction platform designed to replicate the IPL auction experience for local and regional cricket tournaments.',
+    architecture: 'Java backend providing robust auction logic and real-time bidding processing, ensuring fair and synchronous updates across all connected clients.',
+    features: [
+      'Real-time live bidding and player auctioning.',
+      'Team purse management and squad building.',
+      'Live leaderboards and team statistics.',
+      'Admin dashboard for auctioneers to control bidding flow.'
+    ],
+    challenges: [
+      'Ensuring sub-second latency for concurrent real-time bids.',
+      'Maintaining consistent state across all clients during high-intensity bidding wars.'
+    ],
+    techStack: ['Java', 'WebSockets', 'Real-time Systems'],
+    githubUrl: 'https://github.com/chethanhrx/CricketPro',
+    year: '2024',
+    role: 'Creator & Developer',
+    previewColor: '',
+    stats: { stars: 2, forks: 0, language: 'Java' }
+  },
+  {
+    id: 'coderise',
+    title: 'CodeRise',
+    category: 'Full Stack Apps',
+    shortDescription: 'Beginner-focused coding practice platform built with PHP MVC and Docker sandboxing.',
+    overview: 'CodeRise is a coding practice platform designed for beginners. It provides a secure, sandboxed environment to write, run, and test code directly in the browser.',
+    architecture: 'Built from scratch using a custom PHP 8.2 MVC architecture (no external frameworks). Uses Monaco Editor on the frontend and Docker containers on the backend for secure code execution.',
+    features: [
+      'In-browser code editor powered by Monaco Editor.',
+      'Secure code execution in isolated Docker sandboxes.',
+      'Clean custom PHP MVC architecture.',
+      'Real-time output and error reporting.'
+    ],
+    challenges: [
+      'Building a secure, scalable code execution engine using Docker to prevent malicious scripts.',
+      'Implementing a custom MVC framework from scratch in PHP 8.2.'
+    ],
+    techStack: ['PHP', 'MySQL', 'Docker', 'JavaScript', 'HTML/CSS'],
+    githubUrl: 'https://github.com/chethanhrx/CodeRise',
+    year: '2024',
+    role: 'Creator & Developer',
+    previewColor: '',
+    stats: { stars: 2, forks: 0, language: 'PHP' }
+  },
+  {
+    id: 'pocketverse',
+    title: 'PocketVerse',
+    category: 'AI / ML Integrated',
+    shortDescription: 'AI Creator Copilot that builds a Story Memory Graph and validates episodes for narrative consistency.',
+    overview: 'PocketVerse is an AI-powered tool that builds a Story Memory Graph from serialized episodes and validates new episodes for continuity, character evolution, and world consistency — with evidence, not guesses.',
+    architecture: 'JavaScript/React frontend that processes serialized story episodes, building a graph of characters, locations, events, and relationships to ensure narrative consistency across episodes.',
+    features: [
+      'Automated Story Memory Graph construction from serialized episodes.',
+      'Continuity validation for new episodes against established story canon.',
+      'Character evolution tracking across multiple episodes.',
+      'World consistency checks with evidence-based feedback.'
+    ],
+    challenges: [
+      'Designing a flexible graph structure that captures complex narrative relationships.',
+      'Building validation logic that understands narrative context beyond simple keyword matching.'
+    ],
+    techStack: ['JavaScript', 'React', 'TypeScript', 'AI Graphing'],
+    githubUrl: 'https://github.com/chethanhrx/pocketverse',
+    year: '2026',
+    role: 'Creator & Developer',
+    previewColor: '',
+    stats: { stars: 2, forks: 2, language: 'JavaScript' }
   },
   {
     id: 'watchtower',
     title: 'WatchTower',
     category: 'Backend / Microservices',
-    shortDescription: 'AI-powered cybersecurity threat detection platform with real-time analytics.',
+    shortDescription: 'Next-Gen AI-Powered Cybersecurity Threat Detection Platform.',
     overview: 'WatchTower is an enterprise-grade cybersecurity threat detection platform designed to monitor network traffic, identify anomalies using machine learning heuristics, and mitigate vulnerabilities across distributed systems.',
-    architecture: 'Microservices architecture powered by Java 21 & Spring Boot. Kafka ingests high-throughput telemetry data, which is indexed in Elasticsearch for instant querying and cached in Redis for real-time alerting. The UI communicates securely via API Gateway.',
+    architecture: 'Microservices architecture powered by Java 21 & Spring Boot. Kafka ingests high-throughput telemetry data, indexed in Elasticsearch and cached in Redis. Utilizes Python for network scanning and monitoring capabilities.',
     features: [
-      'Real-time anomaly & intrusion detection via distributed Kafka pipelines.',
-      'Elasticsearch log aggregation with sub-second full-text querying.',
+      'Real-time anomaly & intrusion detection via distributed pipelines.',
       'Active port scanning and automated threat vulnerability mapping.',
+      'Log aggregation with full-text querying.',
       'Role-based access control (RBAC) with JWT & Spring Security.'
     ],
     challenges: [
-      'Optimizing Kafka consumer group throughput during high-volume DDoS simulation spikes.',
-      'Designing low-latency Redis caching for rate-limiting and threat intelligence lookups.'
+      'Handling high-volume network packet analysis efficiently.',
+      'Reducing false positives in automated threat detection models.'
     ],
-    techStack: ['Java 21', 'Spring Boot', 'Kafka', 'PostgreSQL', 'Redis', 'Elasticsearch', 'React', 'Docker'],
+    techStack: ['Python', 'Java 21', 'Spring Boot', 'Kafka', 'Elasticsearch'],
     githubUrl: 'https://github.com/chethanhrx/Watch-Tower',
     year: '2024',
-    role: 'Lead Full Stack & System Architect',
-    previewColor: 'from-zinc-900 via-slate-900 to-indigo-950',
-    stats: { stars: 0, forks: 0, language: 'Java' }
+    role: 'Creator & Developer',
+    previewColor: '',
+    stats: { stars: 1, forks: 0, language: 'Python' }
   },
   {
-    id: 'neuramate',
-    title: 'NeuraMate',
-    category: 'AI / ML Integrated',
-    shortDescription: 'Calibrated neural network chess bot simulating human playstyles.',
-    overview: 'NeuraMate is an advanced AI chess engine specifically calibrated to ~250 Elo using dual neural networks: a deep position evaluator and an opponent move predictor trained on 600-900 Elo games.',
-    architecture: 'PyTorch deep learning models served via a Flask REST backend. Incorporates randomized evaluation noise, believable blunder selection, and opponent-move-probability weighted minimax search.',
-    features: [
-      'Dual neural network architecture evaluating positions and predicting opponent moves.',
-      'Opponent-move-probability weighted minimax search tree.',
-      'Interactive Flask-based local web chessboard GUI.',
-      'Believable human-like blunder simulation to match calibrated rating tiers.'
-    ],
-    challenges: [
-      'Tuning evaluation noise parameters to prevent artificial randomness while maintaining accurate rating targets.',
-      'Optimizing PyTorch inference speed within Flask for real-time GUI responsiveness.'
-    ],
-    techStack: ['Python', 'PyTorch', 'Flask', 'Neural Networks', 'JavaScript'],
-    githubUrl: 'https://github.com/chethanhrx/Neura-Mate',
-    year: '2024',
-    role: 'AI Researcher & Engineer',
-    previewColor: 'from-slate-900 via-zinc-900 to-slate-900',
-    stats: { stars: 0, forks: 0, language: 'Python' }
-  },
-  {
-    id: 'cardx',
-    title: 'CardX Validation Engine',
-    category: 'Tools & Automation',
-    shortDescription: 'High-performance multi-gate verification platform with automated crypto payments.',
-    overview: 'CardX is a robust, production-ready platform engineered for algorithmic card validation and dataset processing. It features a multi-gate checking architecture, real-time AJAX verification, and seamless cryptocurrency payment integration.',
-    architecture: 'Vanilla PHP 7.4+ backend paired with secure PDO MySQL database interactions. Integrates HMAC-SHA256 signed Bybit Merchant webhooks for automated user tier upgrades and sliding window rate limiters.',
-    features: [
-      '5 distinct API validation gates ranging from basic Luhn checksums to deep network verification.',
-      'Automated cryptocurrency payment processing via Bybit API with webhook tier activation.',
-      'Interactive AJAX dashboard displaying live progress bars, filtering, and instant notifications.',
-      'Admin Command Center controlling users, gateway weights, global settings, and security audit logs.'
-    ],
-    challenges: [
-      'Implementing strict 60-second sliding rate limits to prevent brute-force API abuse.',
-      'Securing payment webhook listeners against replay and spoofing attacks.'
-    ],
-    techStack: ['PHP', 'MySQL', 'AJAX', 'REST API', 'Bybit Webhooks', 'HTML5/CSS3'],
-    githubUrl: 'https://github.com/chethanhrx/CardX',
-    year: '2024',
-    role: 'Lead Developer',
-    previewColor: 'from-zinc-900 via-neutral-900 to-slate-900',
-    stats: { stars: 0, forks: 0, language: 'PHP' }
-  },
-  {
-    id: 'itc-bot',
-    title: 'SMC Algorithmic Trading Engine',
-    category: 'AI / ML Integrated',
-    shortDescription: 'Smart Money Concepts (SMC/ICT) automated trading bot for Sensex & Bank Nifty.',
-    overview: 'An algorithmic trading system executing high-conviction trades based on Smart Money Concepts, Fair Value Gaps (FVG), and liquidity sweeps, deployed autonomously on Groww Cloud.',
-    architecture: 'Python trading daemon utilizing Pandas and technical indicators (ATR, RSI, EMA alignment) to evaluate market structure shifts. Integrates directly with Groww Trading API for low-latency live execution.',
-    features: [
-      'Multi-timeframe trend analysis confirming swing structure shifts before entry.',
-      'Automated Fair Value Gap (FVG) boundary detection with dynamic risk-to-reward (1:1.5+) targets.',
-      'Real-time trailing stop management maintaining strict drawdown protection.',
-      'Interactive Plotly trade journaling and visual HTML backtest reporting.'
-    ],
-    challenges: [
-      'Filtering false breakouts during high-volatility Indian market opening hours.',
-      'Ensuring reliable state persistence across unexpected container restarts.'
-    ],
-    techStack: ['Python', 'Groww API', 'Pandas', 'Plotly', 'Docker', 'Algorithmic Trading'],
-    githubUrl: 'https://github.com/Harxshz7/ITC-bot',
-    year: '2024',
-    role: 'Quantitative Engineer',
-    previewColor: 'from-slate-900 via-emerald-950 to-slate-900',
-    stats: { stars: 0, forks: 0, language: 'Python' }
-  },
-  {
-    id: 'eventbridge',
-    title: 'Event-Bridge Marketplace',
+    id: 'unichat',
+    title: 'UniChat',
     category: 'Full Stack Apps',
-    shortDescription: 'Modern event-planning platform connecting event organizers with verified vendors.',
-    overview: 'Event-Bridge is a modern marketplace engineered to streamline event coordination by enabling planners to discover, evaluate, and collaborate with verified local service vendors.',
-    architecture: 'React 19 and Vite frontend styled with Tailwind CSS v4, delivering snappy single-page navigation and modular vendor catalog filters.',
+    shortDescription: 'Multi-provider AI chat application supporting diverse backend language models.',
+    overview: 'UniChat is a versatile AI chat application that integrates with various AI providers, allowing users to interact with different AI models through a unified, clean interface.',
+    architecture: 'Java-based backend with abstracted provider interfaces, enabling easy integration of new AI APIs while maintaining a consistent and responsive user experience.',
     features: [
-      'Responsive vendor catalog with real-time category filtering and search.',
-      'Clean frosted glass UI design with fluid layout transitions.',
-      'Modular inquiry booking system and availability calendaring.',
-      'Optimized asset loading and high-contrast accessibility.'
+      'Multi-provider AI integration through a unified interface.',
+      'Chat history management and conversation threading.',
+      'Provider switching without losing conversation context.',
+      'Clean, responsive chat UI.'
     ],
     challenges: [
-      'Structuring state management across complex multi-step vendor booking workflows.',
-      'Maintaining 60 FPS scrolling performance across mobile viewport widths.'
+      'Abstracting different AI provider APIs behind a common scalable interface.',
+      'Handling varying response formats and streaming capabilities across different language models.'
     ],
-    techStack: ['React 19', 'Vite', 'Tailwind CSS', 'TypeScript'],
-    githubUrl: 'https://github.com/OrtexDevs/Event-Bridge',
+    techStack: ['Java', 'REST APIs', 'AI Integration', 'Frontend UI'],
+    githubUrl: 'https://github.com/chethanhrx/UniChat',
     year: '2024',
-    role: 'Frontend Architect',
-    previewColor: 'from-slate-900 via-sky-950 to-slate-900',
-    stats: { stars: 0, forks: 0, language: 'TypeScript' }
+    role: 'Creator & Developer',
+    previewColor: '',
+    stats: { stars: 1, forks: 0, language: 'Java' }
   }
 ];
