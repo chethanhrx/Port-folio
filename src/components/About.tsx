@@ -23,7 +23,7 @@ export default function About() {
           </h2>
           {/* AEO Direct Answer Block */}
           <p className="text-gray-900 font-medium max-w-2xl text-base sm:text-lg leading-relaxed mb-4">
-            Chethan Kumar HR is a Java Full Stack Developer based in Bengaluru, India, and founder of the software agency PactViz.
+            Welcome to the portfolio of Chethan Kumar H R — a Java Full Stack Developer based in Bengaluru, India, and founder of the software agency PactViz.
           </p>
           <p className="text-gray-500 max-w-2xl text-base sm:text-lg leading-relaxed">
             I&apos;m a BCA graduate currently specializing in Java Full Stack Development at JSpiders, Bangalore. 
@@ -85,9 +85,9 @@ export default function About() {
                   key={idx}
                   className="p-6 rounded-xl bg-[#FAFAFA] border border-gray-100 hover:border-gray-200 transition-all duration-300"
                 >
-                  <h4 className="text-sm font-semibold text-gray-900 mb-4">
+                  <div className="text-sm font-semibold text-gray-900 mb-4">
                     {category.title}
-                  </h4>
+                  </div>
                   <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill, sIdx) => (
                       <span

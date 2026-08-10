@@ -75,9 +75,8 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-[1.1] tracking-tight mb-6 whitespace-nowrap"
+            className="text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-[1.1] tracking-tight mb-6"
           >
-            <span className="sr-only">Portfolio of </span>
             Chethan Kumar H R
             <span className="text-accent">.</span>
           </motion.h1>
@@ -113,7 +112,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-7 py-3.5 border border-gray-300 hover:border-gray-400 bg-white hover:bg-gray-50 text-gray-700 text-sm font-medium rounded-lg transition-all cursor-pointer"
             >
               <Mail size={15} />
-              Get In Touch
+              Contact Me
             </button>
 
             <a
@@ -171,8 +170,8 @@ export default function Hero() {
           <div className="relative">
             <div className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-gray-100 shadow-xl">
               <Image
-                src="/chethanimage.jpg"
-                alt="Chethan Kumar H R"
+                src="/chethan-kumar-hr.jpg"
+                alt="Chethan Kumar H R, Java Full Stack Developer"
                 width={320}
                 height={320}
                 className="w-full h-full object-cover"

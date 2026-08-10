@@ -1,1 +1,14 @@
-https://www.chethanhrx.netlify.app/* https://chethanhrx.netlify.app/:splat 301!
+# Netlify _redirects
+# ----------------------------------------------
+# The site currently lives at https://chethanhrx.netlify.app
+# (a Netlify subdomain). There is no "www" variant of a
+# *.netlify.app host, so a www -> non-www rule cannot work here.
+#
+# When you connect a custom domain (e.g. chethanhrx.com) in the
+# Netlify dashboard, uncomment the line below so every www request
+# 301-redirects to the apex domain:
+#
+# https://www.chethanhrx.com/*  https://chethanhrx.com/:splat  301!
+
+# Image renamed for better Google Images relevance — keep old URL working
+/chethanimage.jpg  /chethan-kumar-hr.jpg  301!

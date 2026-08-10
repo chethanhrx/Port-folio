@@ -25,6 +25,9 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       })),
     ],
-    sitemap: 'https://chethanhrx.netlify.app/sitemap.xml',
+    sitemap: [
+      'https://chethanhrx.netlify.app/sitemap.xml',
+      'https://chethanhrx.netlify.app/images-sitemap.xml',
+    ],
   };
 }

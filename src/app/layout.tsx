@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/chethanimage.jpg",
+        url: "/chethan-kumar-hr.jpg",
         width: 800,
         height: 800,
         alt: "Chethan Kumar H R — Java Full Stack Developer",
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Chethan Kumar H R | Full Stack Developer & Founder",
     description: "Official portfolio of Chethan Kumar H R (chethanhrx). Explore live projects and enterprise microservices.",
-    images: ["/chethanimage.jpg"],
+    images: ["/chethan-kumar-hr.jpg"],
   },
   robots: {
     index: true,
@@ -102,9 +102,9 @@ export const metadata: Metadata = {
     canonical: "https://chethanhrx.netlify.app",
   },
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: "/chethan-kumar-hr.jpg",
+    shortcut: "/chethan-kumar-hr.jpg",
+    apple: "/chethan-kumar-hr.jpg",
   },
 };
 
@@ -128,6 +128,9 @@ const jsonLd = {
       "name": "Chethan Kumar H R | Java Full Stack Developer",
       "mainEntity": {
         "@id": "https://chethanhrx.netlify.app/#person"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://chethanhrx.netlify.app/chethan-kumar-hr.jpg"
       }
     },
     {
@@ -163,12 +166,22 @@ const jsonLd = {
         "addressCountry": "India"
       },
       "url": "https://chethanhrx.netlify.app",
-      "image": "https://chethanhrx.netlify.app/chethanimage.jpg",
+      "image": "https://chethanhrx.netlify.app/chethan-kumar-hr.jpg",
       "sameAs": [
         "https://github.com/chethanhrx",
         "https://leetcode.com/u/chethank_hr/",
         "https://www.linkedin.com/in/chethan-kumar-h-r-648bab33a"
       ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://chethanhrx.netlify.app/chethan-kumar-hr.jpg",
+      "url": "https://chethanhrx.netlify.app/chethan-kumar-hr.jpg",
+      "contentUrl": "https://chethanhrx.netlify.app/chethan-kumar-hr.jpg",
+      "name": "Chethan Kumar H R — Java Full Stack Developer",
+      "description": "Portrait of Chethan Kumar H R, Java Full Stack Developer and Architect based in Bengaluru, India.",
+      "caption": "Chethan Kumar H R",
+      "representativeOfPage": true
     },
     {
       "@type": "BreadcrumbList",
