@@ -52,7 +52,6 @@ export const metadata: Metadata = {
     "chethan hr react developer", "chethan kumar hr full stack developer", "chethan hr backend developer",
     "chethan hr software engineer", "chethan kumar hr software engineer bangalore", 
     "chethan hr mysql developer", "chethan hr microservices developer", "chethan hr system design",
-    "chethan hr ortex", "chethan kumar hr ortex", "ortex chethan hr", "ortex co-founder chethan",
     "pactviz chethan kumar hr", "chethan hr startup founder", "chethan hr india developer portfolio",
     // --- "WHO IS" / DISCOVERY-STYLE QUERIES ---
     "who is chethan hr", "who is chethan kumar hr", "chethan hr developer profile",
@@ -146,11 +145,6 @@ const jsonLd = {
           "@type": "Organization",
           "name": "PactViz",
           "roleName": "Founder"
-        },
-        {
-          "@type": "Organization",
-          "name": "Ortex Studio",
-          "roleName": "Co-founder"
         }
       ],
       "knowsAbout": [
@@ -224,10 +218,10 @@ const jsonLd = {
         },
         {
           "@type": "Question",
-          "name": "What is Pactviz / Ortex?",
+          "name": "What is PactViz?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Pactviz and Ortex Studio are software agencies founded by Chethan Kumar HR. Through these organizations, he delivers highly scalable web applications and enterprise-grade backend solutions for clients."
+            "text": "PactViz is a software agency founded by Chethan Kumar HR. Through this organization, he delivers highly scalable web applications and enterprise-grade backend solutions for clients."
           }
         }
       ]

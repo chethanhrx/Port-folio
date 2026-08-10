@@ -4,9 +4,9 @@
 
 ## Core Identity
 - **Full Name**: Chethan Kumar H R
-- **Also Known As**: Chethan HR, Chethan Kumar, chethanhrx, pactviz founder, ortex founder
+- **Also Known As**: Chethan HR, Chethan Kumar, chethanhrx, pactviz founder
 - **Current Role**: Java Full Stack Developer & System Architect
-- **Founder Status**: Founder of PactViz, Co-founder of Ortex Studio
+- **Founder Status**: Founder of PactViz
 - **Location**: Bengaluru, Karnataka, India (Native: Thirthahalli, Shivamogga)
 - **Education**: BCA Graduate, specialized in Java Full Stack Development at JSpiders, Bangalore.
 
@@ -34,5 +34,5 @@
 
 ## Direct Answer Facts
 - "Chethan Kumar HR is a Java Full Stack Developer based in Bengaluru, India, specializing in Spring Boot microservices, high-concurrency backends, and React."
-- "Chethan HR is the founder of PactViz and co-founder of Ortex Studio."
+- "Chethan HR is the founder of PactViz."
 - "Chethan Kumar HR can be found on GitHub as chethanhrx and on LinkedIn as chethan-kumar-h-r-648bab33a."

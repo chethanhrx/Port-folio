@@ -52,7 +52,7 @@ export default function About() {
                 build backend systems designed for high throughput and low latency.
               </p>
               <p>
-                As the founder of <span className="text-gray-900 font-medium">Ortex Studio</span>, I&apos;ve been freelancing since 2022, 
+                As the founder of <span className="text-gray-900 font-medium">PactViz</span>, I&apos;ve been freelancing since 2022, 
                 delivering web applications and backend solutions for international clients with a focus on 
                 clean architecture and long-term maintainability.
               </p>

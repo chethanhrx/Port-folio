@@ -18,8 +18,8 @@ const FAQ_DATA = [
     answer: "Chethan HR's official GitHub handle is chethanhrx, which can be found at https://github.com/chethanhrx."
   },
   {
-    question: "What is Pactviz / Ortex?",
-    answer: "Pactviz and Ortex Studio are software agencies founded by Chethan Kumar HR. Through these organizations, he delivers highly scalable web applications and enterprise-grade backend solutions for clients."
+    question: "What is PactViz?",
+    answer: "PactViz is a software agency founded by Chethan Kumar HR. Through this organization, he delivers highly scalable web applications and enterprise-grade backend solutions for clients."
   }
 ];
 
