@@ -11,8 +11,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chethanhrx.netlify.app"),
-  title: "Chethan Kumar H R | Java Full Stack Developer & System Architect",
-  description: "Official portfolio of Chethan Kumar H R (chethanhrx) — Java Full Stack Developer & AI System Architect specializing in Spring Boot, Microservices, React, and high-concurrency systems.",
+  title: "Chethan Kumar H R | Full Stack Developer",
+  description: "Official portfolio of Chethan Kumar H R. Java Full Stack Developer & Architect specializing in Spring Boot, Microservices, and React.",
   keywords: [
     // --- CORE NAME ---
     "chethan kumar hr", "chethan hr", "chethanhrx", "chetanhr github", "chethanhrx github",
@@ -66,8 +66,8 @@ export const metadata: Metadata = {
   creator: "Chethan Kumar H R",
   applicationName: "Chethan Kumar H R — Portfolio",
   openGraph: {
-    title: "Chethan Kumar H R | Java Full Stack Developer & PactViz Founder",
-    description: "Official portfolio of Chethan Kumar H R (chethanhrx). Explore live projects, system architecture diagrams, and enterprise microservices.",
+    title: "Chethan Kumar H R | Full Stack Developer & Founder",
+    description: "Official portfolio of Chethan Kumar H R (chethanhrx). Explore live projects and enterprise microservices.",
     url: "https://chethanhrx.netlify.app",
     siteName: "Chethan Kumar H R — Portfolio",
     type: "website",
@@ -83,8 +83,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chethan Kumar H R | Java Full Stack Developer & PactViz Founder",
-    description: "Official portfolio of Chethan Kumar H R (chethanhrx). Explore live projects, system architecture diagrams, and enterprise microservices.",
+    title: "Chethan Kumar H R | Full Stack Developer & Founder",
+    description: "Official portfolio of Chethan Kumar H R (chethanhrx). Explore live projects and enterprise microservices.",
     images: ["/chethanimage.jpg"],
   },
   robots: {

@@ -77,6 +77,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-[1.1] tracking-tight mb-6 whitespace-nowrap"
           >
+            <span className="sr-only">Portfolio of </span>
             Chethan Kumar H R
             <span className="text-accent">.</span>
           </motion.h1>
